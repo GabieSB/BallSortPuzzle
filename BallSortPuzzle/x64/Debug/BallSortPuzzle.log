@@ -1,0 +1,10 @@
+﻿  Bola.cpp
+  Juego.cpp
+C:\Users\Asus\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Juego.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Asus\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Juego.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main.cpp
+C:\Users\Asus\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Juego.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Nivel.cpp
+  Tubo.cpp
+  Generating Code...
+  BallSortPuzzle.vcxproj -> C:\Users\Asus\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
