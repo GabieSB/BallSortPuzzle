@@ -1,0 +1,5 @@
+﻿  Juego.cpp
+E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\BallSortPuzzle\Juego.cpp(2,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  main.cpp
+  Generando código...
+  BallSortPuzzle.vcxproj -> E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
