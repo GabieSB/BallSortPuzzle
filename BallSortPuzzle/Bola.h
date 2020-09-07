@@ -16,6 +16,7 @@ private:
 
 public:
 	Bola();
+	Bola(const Bola& bola);
 	Bola( Bola* sig, Bola* ant);
 	Bola(CircleShape *circle);
 	void setColor(Color color);

@@ -16,20 +16,19 @@ Juego::Juego(int ancho, int alto) {
 void Juego::gameLoop() {
 	
 
-	
 	while (this->ventana->isOpen()) {
 		ventana->clear(Color::White);
-		
 		partida->cargarPartida(ventana);
+	
 		ventana->display();
 		Event event;
 		while (this->ventana->pollEvent(event)) {
-		
 		
 
 			analizarEventos(event);
 			
 		}
+		
 	}
 }
 
@@ -42,7 +41,7 @@ void Juego::analizarEventos(Event event) {
 		cout << Mouse::getPosition(*ventana).x << " , " << Mouse::getPosition(*ventana).y << endl;
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
-		partida->esClickEnTubo(x, y);
+		partida->analizarClicks(x, y, ventana);
 		/*int x = 100;
 		int y = 300;
 		
