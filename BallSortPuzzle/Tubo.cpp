@@ -1,12 +1,16 @@
 #include "Tubo.h"
-Tubo::Tubo() {
+Tubo::Tubo(int x, int y) {
 	pilaBolas = NULL;
 	sig = NULL;
 	ant = NULL;
-	cargar_tubo();
+	this->x = x;
+	this->y = y;
+	cantidadActual = 0;
+	//rgar_tubo();
 }
 
 void Tubo::push( Bola *bola) {
+	cantidadActual++;
 	if (pilaBolas == NULL) {
 		bola->setSig(NULL);
 		bola->setAnt(NULL);
@@ -22,6 +26,11 @@ void Tubo::push( Bola *bola) {
 
 	}
 }
+/*  
+void Tubo::setWindow(RenderWindow* ventana) {
+	this->ventana = ventana;
+
+}*/
 
 Bola* Tubo::pop() {
 	Bola* nodoEliminado = pilaBolas;
@@ -34,10 +43,72 @@ Bola* Tubo::pop() {
 	return nodoEliminado;
 }
 
-void Tubo::cargar_tubo() {
+void Tubo::cargar_tubo(RenderWindow*& ventana) {
+
+	int MAX = 5;
+	int inicioX = 10;
+	int inicioY  = 20;
+
+
+	for (int i = 0; i < MAX; i++) {
+
+		sf::CircleShape esfera;
+		esfera.setRadius(20);
+		esfera.setOutlineColor(sf::Color::Red);
+		esfera.setOutlineThickness(5);
+		esfera.setPosition(inicioX, inicioY);
+		inicioY += 4;
+
+		//Bola* bola = new Bola(esfera);
+		//push(bola);
+		
+		//ventana->draw(esfera);
+	}
 
 }
 
-void Tubo::dibujar_bola() {
+
+
+void Tubo::dibujarTubo(RenderWindow*& ventana) {
+	Bola* aux = pilaBolas;
+	int auxY = y;
+	int diametro = 42;
+	
+	while (aux != NULL)
+	{
+		aux->getCircle()->setPosition(x, auxY);
+		ventana->draw(*aux->getCircle());
+		auxY -= diametro;
+		aux = aux->getAnt();
+	}
+
+		
+	
+	
+}
+
+void Tubo::setAnt(Tubo* ant) {
+	this->ant = ant;
+}
+void Tubo::setSig(Tubo* sig) {
+	this->sig = sig;
+}
+
+Tubo* Tubo::getSig() {
+	return sig;
+}
+Tubo* Tubo::getAnt() {
+	return ant;
+}
+
+int Tubo::getCantidadActual() {
+	return cantidadActual;
+}
+
+int Tubo::getX() {
+	return x;
+}
+int Tubo::getY() {
+	return y;
 
 }
