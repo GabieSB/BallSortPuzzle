@@ -1,26 +1,36 @@
 #include "Bola.h"
 
 Bola::Bola() {
-	this->color = "SIN COLOR";
+	this->color = Color::Transparent;
 	this->sig = NULL;
 	this->ant = NULL;
+	
+
+}
+
+Bola::Bola(Bola* sig, Bola* ant) {
+	
+	this->sig = sig;
+	this->ant = ant;
 	this->x = 0;
 	this->y = 0;
+
 }
 
-Bola::Bola(string color, Bola* sig, Bola* ant) {
-	this->color = color;
-	this->sig = sig;
-	this->ant = ant;
+Bola::Bola(CircleShape *circle) {
+	
+	this->circle = circle;
+	this->ant = NULL;
+	this->sig = NULL;
+	this->x = 0;
+	this->y = 0;
+
+
 }
 
-Bola::Bola(string color, Bola* sig, Bola* ant, int x, int y) {
-	this->color = color;
-	this->sig = sig;
-	this->ant = ant;
-	this->x = x;
-	this->y = y;
+void Bola::setCircle(CircleShape *circle) {
 
+	this->circle = circle;
 }
 
 void Bola::setSig(Bola* sig) {
@@ -30,7 +40,7 @@ void Bola::setAnt(Bola* ant) {
 	this->ant = ant;
 }
 
-void Bola::setColor(string color) {
+void Bola::setColor(Color color) {
 	this->color = color;
 }
 void Bola::setX(int x) {
@@ -55,5 +65,12 @@ Bola* Bola::getSig() {
 	return sig;
 
 }
+
+CircleShape* Bola::getCircle() {
+	return this->circle;
+
+}
+
+
 
 
