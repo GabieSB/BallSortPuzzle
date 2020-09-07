@@ -58,7 +58,7 @@ void Juego::analizarEventos(Event event) {
 
 void Juego::image() {
 	this->textura1 = new Texture();
-	imagen = "Resources/tubo.PNG";
+	imagen = "Resources/nivel1.PNG";
 	textura1->loadFromFile(imagen);
 	this->sprite1 = new Sprite(*textura1);
 	sprite1->setTexture(*textura1);
