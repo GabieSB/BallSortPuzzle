@@ -27,6 +27,11 @@ public:
 	void pushMovimiento();
 	Nivel* popMovimiento();
 	Nivel* copiarContenidoNivel(const Nivel*& viejo, Nivel* nuevo);
+	void analizarTubosNivel();
+	void guardarPartida();
+	void nivelGanado(RenderWindow*& window);
+	void clickSiguienteNivel(int x, int y);
+	
 
 };
 

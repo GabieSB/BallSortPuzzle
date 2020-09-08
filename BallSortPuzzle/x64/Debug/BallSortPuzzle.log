@@ -1,6 +1,6 @@
-﻿  Tubo.cpp
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(52,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(52,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(101,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(101,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Nivel.cpp
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(232,34): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(232,23): warning C4309: 'argument': truncation of constant value
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(277): warning C4715: 'Nivel::nivelGanado': not all control paths return a value
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(238): warning C4715: 'Nivel::getColor': not all control paths return a value
   BallSortPuzzle.vcxproj -> C:\Users\serra\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe

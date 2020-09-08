@@ -17,20 +17,31 @@ Tubo::Tubo(const Tubo& tubos) {
 	x = tubos.x;
 	y = tubos.y;
 	estaSeleccionado = tubos.estaSeleccionado;
+	int cant = tubos.cantidadActual;
+	cantidadActual = 0;
 
 	Bola* aux = new Bola();
-	*aux = *tubos.pilaBolas;
-	pilaBolas = NULL;
-	while (aux->getAnt() != NULL) {
-		aux = aux->getAnt();
-		cout << "sale del ciclo" << endl;
-	}
+	if (!cant == 0) {
+		*aux = *tubos.pilaBolas;
+		int cont = 0;
+		pilaBolas = NULL;
+		while (aux->getAnt() != NULL) {
+			aux = aux->getAnt();
 
-	while (aux != NULL) {
-		Bola* aux2 = new Bola(*aux);
-		push(aux2);
-		aux = aux->getSig();
+
+		}
+
+		while (aux != NULL && cont < cant) {
+			Bola* aux2 = new Bola(*aux);
+			push(aux2);
+			cont++;
+			aux = aux->getSig();
+		}
+		
 	}
+	
+	
+	
 
 }
 
@@ -50,7 +61,7 @@ Tubo::Tubo() {
 void Tubo::push( Bola *bola) {
 
 	bola->getCircle()->setPosition(x, y-(40*cantidadActual));
-	cout << "Se coloca una bola en x =" << bola->getCircle()->getPosition().x << " y =" << bola->getCircle()->getPosition().y <<" tubo "<<x<< endl;
+	//cout << "Se coloca una bola en x =" << bola->getCircle()->getPosition().x << " y =" << bola->getCircle()->getPosition().y <<" tubo "<<x<< endl;
 	cantidadActual++;
 	if (pilaBolas == NULL) {
 		bola->setSig(NULL);

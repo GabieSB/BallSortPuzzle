@@ -23,7 +23,7 @@ Bola::Bola(const Bola& bola) {
 	ant = NULL;
 	circle = new CircleShape();
 	*circle = *bola.circle;
-	cout<<"x ="<<circle->getPosition().x <<" y ="<<circle->getPosition().y<<endl;
+//	cout<<"x ="<<circle->getPosition().x <<" y ="<<circle->getPosition().y<<endl;
 }
 
 Bola::Bola(CircleShape *circle) {
@@ -33,7 +33,7 @@ Bola::Bola(CircleShape *circle) {
 	this->sig = NULL;
 	this->x = 0;
 	this->y = 0;
-	cout << "Normal  x =" << circle->getPosition().x << " y =" << circle->getPosition().y << endl;
+
 
 }
 
