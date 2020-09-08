@@ -6,15 +6,10 @@ Partida::Partida() {
 	tuboSeleccionado = NULL;
 	nivel = new Nivel(1);
 	movimientos = NULL;
-
-	
-	
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
 
-	
-	
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
 
@@ -51,8 +46,6 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 void Partida::pushMovimiento() {
 
-	
-
 	Nivel* nuevo = new Nivel(*nivel);
 
 
@@ -80,34 +73,19 @@ Nivel* Partida::popMovimiento() {
 
 		movimientos->setSig(NULL);
 		movimientos = movimientos->getAnt();
-		
 
 	}
 	return nodoEliminado;
 }
 
-Nivel* Partida::copiarContenidoNivel(const Nivel*& viejo, Nivel* nuevo) {
-	if (viejo) {
-		*nuevo = *viejo;
-	}
-	else {
-		
-	}
-	return NULL;
-	
-}
 bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	int x ;
 	int y ;
-
 	Tubo* aux = nivel->getTubos();
 	while (aux != NULL) {
 		x = aux->getX();
 		y = aux->getY();
 		if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
-			cout << "Es click en tubo" << endl;
-
-			
 			
 			if (tuboSeleccionado == NULL) {
 				aux->seleccionarTope(window);
@@ -118,7 +96,6 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 				realizarMovimiento(aux, window);
 			}
 			
-			
 			return true;
 		}
 
@@ -127,23 +104,7 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 
 	return false;
 }
-void Partida::analizarTubosNivel() {
-	cout << "ANLISIS DE TUBOS" << endl;
-	Tubo* auxTubo = nivel->getTubos();
-	Bola* bolas = tuboSeleccionado->getTope();
-	int cont = 0;
-	while (auxTubo != NULL) {
-		Bola* bolas = auxTubo->getTope();
-		while (bolas != NULL) {
-			cont++;
-			bolas = bolas->getAnt();
-		}
-		cout << "TUBO "<<auxTubo->getX()<<" cont = "<< cont << endl;
-		cont = 0;
-		auxTubo = auxTubo->getSig();
-	}
-	cout << "ANTES DE REALIZAR MOVIMIENTO" << cont << endl;
-}
+
 void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 	esClickEnTubo(xm,ym,window);
 	esClickEnRetroceder(xm, ym, window);
@@ -154,11 +115,8 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 	if (xm > 720 && xm < 780 && ym < 80 && ym> 20) {
-
-		cout << "es en retroceso" << endl;
 		nivel = NULL;
 		nivel = popMovimiento();
-		cout << "Movimientos del nivel " << nivel->getMovimientos() << endl;;
 		cout << nivel->getTubos()->getCantidadActual();
 		nivel->dibujarNivel(window);
 	
@@ -176,16 +134,12 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 		if (aux->getCantidadActual() < 4 && circuloTopeRecibe->getFillColor() == circuloTopeEnvia->getFillColor()) {
 			pushMovimiento();
 			aux->push(tuboSeleccionado->pop());
-			
-			
-			
 			nivel->setMovimientos();
-			if (nivel->nivelGanado()) nivelGanado(window);
+			if (nivel->nivelGanado()) nivelGanado(window);//ANALIZA SII GAAAAA
 		}
 		else {
 			cout << "no se puede colocar " << endl;
 			tuboSeleccionado->deseleccionarTope(window);
-		
 
 		}
 	}
@@ -200,19 +154,10 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 
 
 }
-void Partida::seleccionarBolaTope(Tubo  *&tubo) {
-	cout << "En sleccionar bola" << endl;
-
-	CircleShape* bolaSeleccionada = tubo->getTope()->getCircle();
-
-	bolaSeleccionada->setPosition(bolaSeleccionada->getPosition().x, bolaSeleccionada->getPosition().y - 20);
-}
 void Partida::clickSiguienteNivel(int xm, int ym) {
-	/*263 , 451
-528 , 453
-394 , 419
-396 , 481*/
+
 	if (xm > 263 && xm < 528 && ym > 419 && ym < 481) {
+		movimientos = NULL;
 		nivel->setIsCompleto(true);
 		nivel = new Nivel(nivel->getNumero() + 1);
 	}
@@ -220,10 +165,6 @@ void Partida::clickSiguienteNivel(int xm, int ym) {
 void Partida::nivelGanado(RenderWindow *&window) {
 	cout << "GANAAASTEEEE!" << endl;
 	nivel->setIsCompleto(true);
-
-
-
-	
 	
 }
 

@@ -1,7 +1,6 @@
 #include "Nivel.h"
 
 Nivel::Nivel(int num) {
-	cout << "Numero " << num << endl;
 	iniTubos = NULL;
 	numero = num;
 	if (num == 0) {
@@ -10,7 +9,7 @@ Nivel::Nivel(int num) {
 	else {
 		cantidadTubo = numero+3;
 	}
-	cout << "Cantidad tuvos " << cantidadTubo << endl;
+
 	isPassed = false;
 	movimientos = 0;
 
@@ -19,7 +18,7 @@ Nivel::Nivel(int num) {
 }
 
 Nivel::Nivel(const Nivel& nivel) {
-	cout << "se usa el constructor de copia" << endl;
+
 	numero = nivel.numero;
 	cantidadTubo = nivel.cantidadTubo;
 	isPassed = nivel.isPassed;
@@ -95,6 +94,9 @@ void Nivel::cargarNivel(int num) {
 	}
 	else if (num == 5) {
 		nivel5();
+	}
+	else {
+		cout << "JUEGO TERMINADO" << endl;
 	}
 
 
@@ -250,17 +252,8 @@ void Nivel::dibujarNivel(RenderWindow *& ventana) {
 
 bool Nivel::nivelGanado() {
 	Tubo* aux = iniTubos;
-	cout << "NUUUMERRROOOOO   " << numero << endl;
-	int tubosParaGanar;
-	if (numero == 0) {
-		tubosParaGanar = 3;
-	}
-	else {
-		tubosParaGanar = numero - 2;
-	}
 	int cont = 0;
 
-	cout << "Tubos para ganar " << tubosParaGanar << endl;
 
 	while (aux != NULL) {
 		
@@ -272,8 +265,12 @@ bool Nivel::nivelGanado() {
 		}
 		aux = aux->getSig();
 	}
-	cout << "fuera de " << endl;
-	if (cont == tubosParaGanar) return true;
+	cout << "numero - 2"<<cantidadTubo-2 << endl;
+
+	if (numero == 0 && cont == 3  || numero>1 && cont == cantidadTubo - 2) {
+		return true;
+	}
+	
 }
 
  Tubo* Nivel::getTubos() {

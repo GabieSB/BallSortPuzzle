@@ -39,7 +39,7 @@ void Juego::analizarEventos(Event event) {
 		cout << Mouse::getPosition(*ventana).x << " , " << Mouse::getPosition(*ventana).y << endl;
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
-		partida->esClickEnTubo(x, y);
+		
 		image();
 		partida->analizarClicks(x, y, ventana);
 		/*int x = 100;
