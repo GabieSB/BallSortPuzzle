@@ -1,9 +1,6 @@
-﻿  Partida.cpp
-  Tubo.cpp
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(59,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(59,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(79,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(79,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(38): warning C4715: 'Partida::esClickEnTubo': not all control paths return a value
+﻿  Tubo.cpp
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(52,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(52,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(101,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(101,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   BallSortPuzzle.vcxproj -> C:\Users\serra\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe

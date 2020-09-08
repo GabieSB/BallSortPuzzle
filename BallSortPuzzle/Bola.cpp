@@ -1,5 +1,6 @@
 #include "Bola.h"
-
+#include <iostream>
+using namespace std;
 Bola::Bola() {
 	this->color = Color::Transparent;
 	this->sig = NULL;
@@ -17,6 +18,14 @@ Bola::Bola(Bola* sig, Bola* ant) {
 
 }
 
+Bola::Bola(const Bola& bola) {
+	sig = NULL;
+	ant = NULL;
+	circle = new CircleShape();
+	*circle = *bola.circle;
+	cout<<"x ="<<circle->getPosition().x <<" y ="<<circle->getPosition().y<<endl;
+}
+
 Bola::Bola(CircleShape *circle) {
 	
 	this->circle = circle;
@@ -24,7 +33,7 @@ Bola::Bola(CircleShape *circle) {
 	this->sig = NULL;
 	this->x = 0;
 	this->y = 0;
-
+	cout << "Normal  x =" << circle->getPosition().x << " y =" << circle->getPosition().y << endl;
 
 }
 
