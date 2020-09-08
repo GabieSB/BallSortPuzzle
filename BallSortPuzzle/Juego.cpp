@@ -9,12 +9,12 @@ Juego::Juego(int ancho, int alto) {
 	this->alto = alto;
 	 ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
 	 partida = new Partida();
-	
 	gameLoop();
 }
 
 void Juego::gameLoop() {
 	
+
 
 	
 	while (this->ventana->isOpen()) {
@@ -43,6 +43,7 @@ void Juego::analizarEventos(Event event) {
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
 		partida->esClickEnTubo(x, y);
+		image();
 		/*int x = 100;
 		int y = 300;
 		
