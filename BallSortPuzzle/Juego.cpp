@@ -9,13 +9,11 @@ Juego::Juego(int ancho, int alto) {
 	this->alto = alto;
 	 ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
 	 partida = new Partida();
-	
 	gameLoop();
 }
 
 void Juego::gameLoop() {
 	
-
 	while (this->ventana->isOpen()) {
 		ventana->clear(Color::White);
 		partida->cargarPartida(ventana);
@@ -41,6 +39,8 @@ void Juego::analizarEventos(Event event) {
 		cout << Mouse::getPosition(*ventana).x << " , " << Mouse::getPosition(*ventana).y << endl;
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
+		partida->esClickEnTubo(x, y);
+		image();
 		partida->analizarClicks(x, y, ventana);
 		/*int x = 100;
 		int y = 300;
