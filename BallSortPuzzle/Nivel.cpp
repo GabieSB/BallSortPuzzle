@@ -105,10 +105,18 @@ void Nivel::nivel1() {
 	string tuboColores1[5] = { "azul", "rojo","azul", "rojo" };
 	string tuboColores2[5] = { "rojo", "azul","rojo", "azul" };
 
-	generarTubo(100, 300, tuboColores1);
-	generarTubo(200, 300, tuboColores2);
-	Tubo* tubo1 = new Tubo(300, 300);
+	generarTubo(200, 300, tuboColores1);
+	generarTubo(270, 300, tuboColores2);
+	Tubo* tubo1 = new Tubo(340, 300);
 	agregarTubo(tubo1);
+	image();
+}
+void Nivel::image() {
+	this->textura1 = new Texture();
+	imagen = "Resources/nivel1.PNG";
+	textura1->loadFromFile(imagen);
+	this->sprite1 = new Sprite(*textura1);
+	sprite1->setTexture(*textura1);
 }
 
 void Nivel::nivel2() {
@@ -173,7 +181,7 @@ void Nivel::nivel5() {
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
 	string tuboColores6[6] = { "verde",  "amarillo" ,"rosado", "morado" };
 
-	generarTubo(50, 300, tuboColores1);
+	generarTubo(100, 250, tuboColores1);
 	generarTubo(150, 300, tuboColores2);
 	generarTubo(250, 300, tuboColores3);
 	generarTubo(350, 300, tuboColores4);
@@ -190,7 +198,7 @@ void Nivel::generarTubo(int x, int y, string colores[]) {
 	for (int i = 0; i < 4; i++) {
 
 		sf::CircleShape* esfera = new CircleShape();
-		esfera->setRadius(20);
+		esfera->setRadius(10);
 		esfera->setFillColor(getColor(colores[i]));
 
 		Bola* bola = new Bola(esfera);

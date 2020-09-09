@@ -10,6 +10,7 @@ Juego::Juego(int ancho, int alto) {
 	 ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
 	 partida = new Partida();
 	gameLoop();
+	
 }
 
 void Juego::gameLoop() {
@@ -31,7 +32,6 @@ void Juego::gameLoop() {
 }
 
 void Juego::analizarEventos(Event event) {
-
 	if (event.type == Event::Closed) {
 		ventana->close();
 	}
@@ -40,7 +40,6 @@ void Juego::analizarEventos(Event event) {
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
 		
-		image();
 		partida->analizarClicks(x, y, ventana);
 		/*int x = 100;
 		int y = 300;

@@ -11,6 +11,9 @@ private:
 	Nivel* sig;
 	Nivel* ant;
 	int movimientos;
+	Texture *textura1;
+	Sprite *sprite1;
+	String imagen;
 
 public:
 
@@ -18,6 +21,7 @@ public:
 	Nivel(const Nivel& nivel);
 	void cargarNivel(int num);
 	void nivel1();
+	void image();
 	void nivel2();
 	void nivel3();
 	void nivel4();

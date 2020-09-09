@@ -25,7 +25,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 	
 	Sprite *sprite1 = new Sprite(*textura1);
 	sprite1->setTexture(*textura1);
-	sprite1->setPosition(720, 20);
+	sprite1->setPosition(530, 5);
 	ventana->draw(*sprite1);
 
 	if (nivel->isCompleto()) {
@@ -114,7 +114,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 }
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
-	if (xm > 720 && xm < 780 && ym < 80 && ym> 20) {
+	if (xm > 530 && xm < 590 && ym < 40 && ym> 5) {
 		nivel = NULL;
 		nivel = popMovimiento();
 		cout << nivel->getTubos()->getCantidadActual();
