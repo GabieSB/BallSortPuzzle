@@ -21,7 +21,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 	Texture *textura1 = new Texture();
 	string imagen = "Resources/repetir.PNG";
 
-	if (textura1->loadFromFile(imagen));
+	textura1->loadFromFile(imagen);
 	
 	Sprite *sprite1 = new Sprite(*textura1);
 	sprite1->setTexture(*textura1);
@@ -37,7 +37,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 		Sprite* sprite2 = new Sprite(*textura2);
 		sprite2->setTexture(*textura2);
-		sprite2->setPosition(150,120);
+		sprite2->setPosition(60,90);
 		ventana->draw(*sprite2);
 	}
 }
@@ -83,26 +83,26 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	int y ;
 	Tubo* aux = nivel->getTubos();
 	while (aux != NULL) {
-		x = aux->getX();
-		y = aux->getY();
-		if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
-			
-			if (tuboSeleccionado == NULL) {
-				aux->seleccionarTope(window);
-				tuboSeleccionado = aux;
+			x = aux->getX();
+			y = aux->getY();
+			if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
+
+				if (tuboSeleccionado == NULL) {
+					aux->seleccionarTope(window);
+					tuboSeleccionado = aux;
+				}
+				else {
+
+					realizarMovimiento(aux, window);
+				}
+
+				return true;
 			}
-			else {
-				
-				realizarMovimiento(aux, window);
-			}
-			
-			return true;
+
+			aux = aux->getSig();
 		}
 
-		aux = aux->getSig();
-	}
-
-	return false;
+		return false;
 }
 
 void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
@@ -114,12 +114,17 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 }
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
-	if (xm > 530 && xm < 590 && ym < 40 && ym> 5) {
+	if (xm > 530 && xm < 590 && ym < 40 && ym> 15) {
 		nivel = NULL;
 		nivel = popMovimiento();
-		cout << nivel->getTubos()->getCantidadActual();
-		nivel->dibujarNivel(window);
-	
+		if (nivel != NULL) {
+			cout << nivel->getTubos()->getCantidadActual();
+			nivel->dibujarNivel(window);
+		}
+		else {
+			cout << "No hay mas movimientos" << endl;
+		}
+		
 	}
 }
 
@@ -156,7 +161,7 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 }
 void Partida::clickSiguienteNivel(int xm, int ym) {
 
-	if (xm > 263 && xm < 528 && ym > 419 && ym < 481) {
+	if (xm > 179 && xm < 433 && ym > 390 && ym < 397) {
 		movimientos = NULL;
 		nivel->setIsCompleto(true);
 		nivel = new Nivel(nivel->getNumero() + 1);

@@ -18,7 +18,6 @@ Nivel::Nivel(int num) {
 }
 
 Nivel::Nivel(const Nivel& nivel) {
-
 	numero = nivel.numero;
 	cantidadTubo = nivel.cantidadTubo;
 	isPassed = nivel.isPassed;
@@ -32,9 +31,6 @@ Nivel::Nivel(const Nivel& nivel) {
 		agregarTubo(aux2);
 		aux = aux->getSig();
 	}
-	
-
-
 }
 
 void Nivel::setSig(Nivel* sig) {
@@ -82,6 +78,7 @@ void Nivel::cargarNivel(int num) {
 	if (num == 1) {
 		nivel1();
 
+
 	}
 	else if(num == 2){
 		nivel2();
@@ -109,14 +106,6 @@ void Nivel::nivel1() {
 	generarTubo(270, 300, tuboColores2);
 	Tubo* tubo1 = new Tubo(340, 300);
 	agregarTubo(tubo1);
-	image();
-}
-void Nivel::image() {
-	this->textura1 = new Texture();
-	imagen = "Resources/nivel1.PNG";
-	textura1->loadFromFile(imagen);
-	this->sprite1 = new Sprite(*textura1);
-	sprite1->setTexture(*textura1);
 }
 
 void Nivel::nivel2() {
@@ -126,11 +115,11 @@ void Nivel::nivel2() {
 	string tuboColores2[5] = { "amarillo", "amarillo","rojo", "azul" };
 	string tuboColores3[5] = { "rojo",  "azul" ,"amarillo", "rojo" };
 
-	generarTubo(100, 300, tuboColores1);
-	generarTubo(200, 300, tuboColores2);
-	generarTubo(300, 300, tuboColores3);
-	Tubo* tubo1 = new Tubo(400, 300);
-	Tubo* tubo2 = new Tubo(500, 300);
+	generarTubo(200, 220, tuboColores1);
+	generarTubo(270, 220, tuboColores2);
+	generarTubo(340, 220, tuboColores3);
+	Tubo* tubo1 = new Tubo(240, 390);
+	Tubo* tubo2 = new Tubo(310, 390);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -143,12 +132,12 @@ void Nivel::nivel3() {
 	string tuboColores3[5] = { "rojo",  "morado" ,"azul", "morado" };
 	string tuboColores4[5] = { "rojo",  "amarillo" ,"morado", "rojo" };
 
-	generarTubo(100, 300, tuboColores1);
-	generarTubo(200, 300, tuboColores2);
-	generarTubo(300, 300, tuboColores3);
-	generarTubo(400, 300, tuboColores4);
-	Tubo* tubo1 = new Tubo(500, 300);
-	Tubo* tubo2 = new Tubo(600, 300);
+	generarTubo(200, 220, tuboColores1);
+	generarTubo(270, 220, tuboColores2);
+	generarTubo(340, 220, tuboColores3);
+	generarTubo(200, 390, tuboColores4);
+	Tubo* tubo1 = new Tubo(270, 390);
+	Tubo* tubo2 = new Tubo(340, 390);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -161,13 +150,13 @@ void Nivel::nivel4() {
 	string tuboColores4[5] = { "amarillo",  "rosado" ,"rojo", "azul" };
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
 
-	generarTubo(100, 300, tuboColores1);
-	generarTubo(200, 300, tuboColores2);
-	generarTubo(300, 300, tuboColores3);
-	generarTubo(400, 300, tuboColores4);
-	generarTubo(500, 300, tuboColores5);
-	Tubo* tubo1 = new Tubo(600, 300);
-	Tubo* tubo2 = new Tubo(700, 300);
+	generarTubo(170, 220, tuboColores1);
+	generarTubo(240, 220, tuboColores2);
+	generarTubo(310, 220, tuboColores3);
+	generarTubo(380, 220, tuboColores4);
+	generarTubo(210, 390, tuboColores5);
+	Tubo* tubo1 = new Tubo(280, 390);
+	Tubo* tubo2 = new Tubo(350, 390);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -181,14 +170,14 @@ void Nivel::nivel5() {
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
 	string tuboColores6[6] = { "verde",  "amarillo" ,"rosado", "morado" };
 
-	generarTubo(100, 250, tuboColores1);
-	generarTubo(150, 300, tuboColores2);
-	generarTubo(250, 300, tuboColores3);
-	generarTubo(350, 300, tuboColores4);
-	generarTubo(450, 300, tuboColores5);
-	generarTubo(550, 300, tuboColores6);
-	Tubo* tubo1 = new Tubo(650, 300);
-	Tubo* tubo2 = new Tubo(750, 300);
+	generarTubo(170, 220, tuboColores1);
+	generarTubo(240, 220, tuboColores2);
+	generarTubo(310, 220, tuboColores3);
+	generarTubo(380, 220, tuboColores4);
+	generarTubo(170, 390, tuboColores5);
+	generarTubo(240, 390, tuboColores6);
+	Tubo* tubo1 = new Tubo(310, 390);
+	Tubo* tubo2 = new Tubo(380, 390);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }

@@ -108,7 +108,7 @@ void Tubo::cargar_tubo(RenderWindow*& ventana) {
 		sf::CircleShape esfera;
 		esfera.setRadius(20);
 		esfera.setOutlineColor(sf::Color::Red);
-		esfera.setOutlineThickness(5);
+		esfera.setOutlineThickness(MAX);
 		esfera.setPosition(inicioX, inicioY);
 		inicioY += 4;
 

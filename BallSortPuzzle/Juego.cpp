@@ -18,7 +18,7 @@ void Juego::gameLoop() {
 	while (this->ventana->isOpen()) {
 		ventana->clear(Color::White);
 		partida->cargarPartida(ventana);
-	
+		
 		ventana->display();
 		Event event;
 		while (this->ventana->pollEvent(event)) {

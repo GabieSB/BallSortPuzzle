@@ -21,7 +21,6 @@ public:
 	Nivel(const Nivel& nivel);
 	void cargarNivel(int num);
 	void nivel1();
-	void image();
 	void nivel2();
 	void nivel3();
 	void nivel4();
