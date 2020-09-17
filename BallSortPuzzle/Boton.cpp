@@ -1,6 +1,6 @@
 #include "Boton.h"
 
-Boton::Boton(int posx, int posy, float width, float heigth, Color color, String nombre)
+Boton::Boton(float posx, float posy, float width, float heigth, Color color, String nombre)
 {
 	btn = new RectangleShape({ width, heigth });
 	btn->setFillColor(color);

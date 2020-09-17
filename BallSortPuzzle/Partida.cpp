@@ -6,6 +6,7 @@ Partida::Partida() {
 	tuboSeleccionado = NULL;
 	nivel = new Nivel(1);
 	movimientos = NULL;
+	ventana = NULL;
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
@@ -14,6 +15,7 @@ void Partida::cargarPartida(RenderWindow *&ventana) {
 	textura->loadFromFile(imagen);
 	Sprite *sprite = new Sprite(*textura);
 	sprite->setTexture(*textura);
+	//sprite->setPosition(2);
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);

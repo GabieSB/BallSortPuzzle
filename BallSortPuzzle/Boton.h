@@ -11,7 +11,7 @@ private:
 	Text txt_btn;
 
 public:
-	Boton(int posx, int posy, float width, float heigth, Color color, String nombre);
+	Boton(float posx, float posy, float width, float heigth, Color color, String nombre);
 	RectangleShape* getRect();
 };
 

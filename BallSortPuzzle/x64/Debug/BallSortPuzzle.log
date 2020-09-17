@@ -1,9 +1,2 @@
-﻿  Nivel.cpp
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(234,34): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(234,23): warning C4309: 'argument': truncation of constant value
-  Partida.cpp
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(24,37): warning C4390: ';': empty controlled statement found; is this the intent?
-  Generating Code...
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(240): warning C4715: 'Nivel::getColor': not all control paths return a value
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(274): warning C4715: 'Nivel::nivelGanado': not all control paths return a value
-  BallSortPuzzle.vcxproj -> C:\Users\serra\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
+﻿  Partida.cpp
+  BallSortPuzzle.vcxproj -> E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe

@@ -2,6 +2,7 @@
 Global::Global() {
 	pantalla = 1;
 	ventana = nullptr;
+	nivel = 1;
 }
 
 Global &Global::getInstance() {
