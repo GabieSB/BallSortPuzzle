@@ -7,8 +7,10 @@ using namespace std;
 Juego::Juego(int ancho, int alto) {
 	this->ancho = ancho;
 	this->alto = alto;
-	 ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
-	 partida = new Partida();
+	ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
+	Global::getInstance().setWindow(ventana);
+	partida = new Partida();
+	menu = new Menu(partida);
 	gameLoop();
 	
 }
@@ -17,7 +19,13 @@ void Juego::gameLoop() {
 	
 	while (this->ventana->isOpen()) {
 		ventana->clear(Color::White);
-		partida->cargarPartida(ventana);
+		if (Global::getInstance().getPantalla() == 1) {
+			menu->botones(ventana);
+		}
+		else {
+			partida->cargarPartida(ventana);
+		}
+		
 		
 		ventana->display();
 		Event event;
@@ -40,7 +48,13 @@ void Juego::analizarEventos(Event event) {
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;
 		
-		partida->analizarClicks(x, y, ventana);
+		if (Global::getInstance().getPantalla() == 1) {
+			menu->analizarClicks(x, y, ventana);
+		}
+		else {
+			partida->analizarClicks(x, y, ventana);
+		}
+		
 		/*int x = 100;
 		int y = 300;
 		

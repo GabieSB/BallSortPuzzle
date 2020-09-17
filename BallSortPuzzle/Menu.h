@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Boton.h"
 #include "Partida.h"
+#include "Global.h"
 
 using namespace std;
 using namespace sf;
@@ -12,7 +13,7 @@ private:
 	Text* txt1, * txt2, * txt3, * txt4;
 	Partida* partida;
 public:
-	Menu();
+	Menu(Partida *p);
 	void botones(RenderWindow* v);
 	void analizarClicks(int posx, int posy, RenderWindow*& window);
 	void iniciar(int posx, int posy, RenderWindow* v);

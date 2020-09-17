@@ -3,6 +3,7 @@
 Nivel::Nivel(int num) {
 	iniTubos = NULL;
 	numero = num;
+	Global::getInstance().setNivel(num);
 	if (num == 0) {
 		cantidadTubo = 3;
 	}
@@ -74,11 +75,10 @@ void Nivel::agregarTubo(Tubo *&tubo) {
 	}
 }
 void Nivel::cargarNivel(int num) {
+	Global::getInstance().setNivel(num);
 
 	if (num == 1) {
 		nivel1();
-
-
 	}
 	else if(num == 2){
 		nivel2();
@@ -233,7 +233,9 @@ Color Nivel::getColor(string name) {
 	else if (name == "naranja") {
 		return Color::Color(218, 94, 47);
 	}
-
+	else {
+		return Color::Color(218, 94, 47);
+	}
 }
 void Nivel::dibujarNivel(RenderWindow *& ventana) {
 
@@ -264,9 +266,7 @@ bool Nivel::nivelGanado() {
 	}
 	cout << "numero - 2"<<cantidadTubo-2 << endl;
 
-	if (numero == 0 && cont == 3  || numero>1 && cont == cantidadTubo - 2) {
-		return true;
-	}
+	return (numero == 0 && cont == 3 || numero > 1 && cont == cantidadTubo - 2);
 	
 }
 

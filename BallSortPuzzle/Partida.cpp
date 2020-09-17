@@ -9,10 +9,14 @@ Partida::Partida() {
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
-
+	Texture *textura = new Texture();
+	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
+	textura->loadFromFile(imagen);
+	Sprite *sprite = new Sprite(*textura);
+	sprite->setTexture(*textura);
+	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
-
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -33,7 +37,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 		Texture* textura2 = new Texture();
 		string imagen2 = "Resources/win.jpg";
 
-		if (!textura2->loadFromFile("Resources/win.jpg"))cout << "no se carga la imagen<<";
+		if (!textura2->loadFromFile(imagen2))cout << "no se carga la imagen<<";
 
 		Sprite* sprite2 = new Sprite(*textura2);
 		sprite2->setTexture(*textura2);
@@ -83,26 +87,26 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	int y ;
 	Tubo* aux = nivel->getTubos();
 	while (aux != NULL) {
-			x = aux->getX();
-			y = aux->getY();
-			if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
+		x = aux->getX();
+		y = aux->getY();
+		if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
 
-				if (tuboSeleccionado == NULL) {
-					aux->seleccionarTope(window);
-					tuboSeleccionado = aux;
-				}
-				else {
+			if (tuboSeleccionado == NULL) {
+				aux->seleccionarTope(window);
+				tuboSeleccionado = aux;
+			}
+			else {
 
-					realizarMovimiento(aux, window);
-				}
-
-				return true;
+				realizarMovimiento(aux, window);
 			}
 
-			aux = aux->getSig();
+			return true;
 		}
 
-		return false;
+		aux = aux->getSig();
+	}
+
+	return false;
 }
 
 void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {

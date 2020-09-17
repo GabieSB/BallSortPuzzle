@@ -1,6 +1,7 @@
 #pragma once
 #include "Nivel.h"
 #include "Tubo.h"
+#include "Global.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 class Partida

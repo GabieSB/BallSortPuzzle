@@ -1,7 +1,7 @@
 #include "Menu.h"
 
-Menu::Menu() {
-	partida = new Partida();
+Menu::Menu(Partida* p) {
+	partida = p;
 }
 void Menu::botones(RenderWindow* v) {
 	//int posx, int posy, float width, float heigth, String nombre, Color color
@@ -25,9 +25,7 @@ void Menu::analizarClicks(int posx, int posy, RenderWindow*& window) {
 
 void Menu::iniciar(int posx, int posy,RenderWindow * v) {
 	if (posx > 200 && posx < 400 && posy > 150 && posy < 190) {
-		cout << "Entro" << endl;
-		v->clear(Color::White);
-		//partida->cargarPartida(v);
+		Global::getInstance().setPantalla(2);
 	}
 }
 

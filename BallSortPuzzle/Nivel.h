@@ -1,6 +1,7 @@
 #pragma once
 #include "Tubo.h"
 #include "Bola.h"
+#include "Global.h"
 class Nivel
 {
 private:
