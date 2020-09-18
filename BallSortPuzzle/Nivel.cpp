@@ -116,28 +116,27 @@ void Nivel::nivel2() {
 	string tuboColores3[5] = { "rojo",  "azul" ,"amarillo", "rojo" };
 
 	generarTubo(200, 220, tuboColores1);
-	generarTubo(270, 220, tuboColores2);
-	generarTubo(340, 220, tuboColores3);
-	Tubo* tubo1 = new Tubo(240, 390);
-	Tubo* tubo2 = new Tubo(310, 390);
+	generarTubo(275, 220, tuboColores2);
+	generarTubo(350, 220, tuboColores3);
+	Tubo* tubo1 = new Tubo(238, 407);
+	Tubo* tubo2 = new Tubo(313, 407);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
 
 void Nivel::nivel3() {
 
-
-	string tuboColores1[5] = { "azul", "amarillo","rojo", "azul" };
-	string tuboColores2[5] = { "morado", "amarillo","amarillo", "azul" };
-	string tuboColores3[5] = { "rojo",  "morado" ,"azul", "morado" };
-	string tuboColores4[5] = { "rojo",  "amarillo" ,"morado", "rojo" };
+	string tuboColores1[5] = { "azul", "amarillo","rojo", "azul"};
+	string tuboColores2[5] = { "morado", "amarillo","amarillo", "azul"};
+	string tuboColores3[5] = { "rojo",  "morado" ,"azul", "morado"};
+	string tuboColores4[5] = { "rojo",  "amarillo" ,"morado", "rojo"};
 
 	generarTubo(200, 220, tuboColores1);
-	generarTubo(270, 220, tuboColores2);
-	generarTubo(340, 220, tuboColores3);
-	generarTubo(200, 390, tuboColores4);
-	Tubo* tubo1 = new Tubo(270, 390);
-	Tubo* tubo2 = new Tubo(340, 390);
+	generarTubo(275, 220, tuboColores2);
+	generarTubo(348, 220, tuboColores3);
+	generarTubo(200, 408, tuboColores4);
+	Tubo* tubo1 = new Tubo(275, 390);
+	Tubo* tubo2 = new Tubo(348, 390);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -150,13 +149,13 @@ void Nivel::nivel4() {
 	string tuboColores4[5] = { "amarillo",  "rosado" ,"rojo", "azul" };
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
 
-	generarTubo(170, 220, tuboColores1);
-	generarTubo(240, 220, tuboColores2);
-	generarTubo(310, 220, tuboColores3);
+	generarTubo(165, 220, tuboColores1);
+	generarTubo(237, 220, tuboColores2);
+	generarTubo(307, 220, tuboColores3);
 	generarTubo(380, 220, tuboColores4);
-	generarTubo(210, 390, tuboColores5);
-	Tubo* tubo1 = new Tubo(280, 390);
-	Tubo* tubo2 = new Tubo(350, 390);
+	generarTubo(198, 410, tuboColores5);
+	Tubo* tubo1 = new Tubo(273, 410);
+	Tubo* tubo2 = new Tubo(345, 410);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -170,14 +169,14 @@ void Nivel::nivel5() {
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
 	string tuboColores6[6] = { "verde",  "amarillo" ,"rosado", "morado" };
 
-	generarTubo(170, 220, tuboColores1);
-	generarTubo(240, 220, tuboColores2);
-	generarTubo(310, 220, tuboColores3);
-	generarTubo(380, 220, tuboColores4);
-	generarTubo(170, 390, tuboColores5);
-	generarTubo(240, 390, tuboColores6);
-	Tubo* tubo1 = new Tubo(310, 390);
-	Tubo* tubo2 = new Tubo(380, 390);
+	generarTubo(200, 220, tuboColores1);
+	generarTubo(277, 220, tuboColores2);
+	generarTubo(350, 220, tuboColores3);
+	generarTubo(425, 220, tuboColores4);
+	generarTubo(200, 410, tuboColores5);
+	generarTubo(274, 410, tuboColores6);
+	Tubo* tubo1 = new Tubo(350, 410);
+	Tubo* tubo2 = new Tubo(425, 410);
 	agregarTubo(tubo1);
 	agregarTubo(tubo2);
 }
@@ -233,9 +232,9 @@ Color Nivel::getColor(string name) {
 	else if (name == "naranja") {
 		return Color::Color(218, 94, 47);
 	}
-	else {
+	/*else {
 		return Color::Color(218, 94, 47);
-	}
+	}*/
 }
 void Nivel::dibujarNivel(RenderWindow *& ventana) {
 
@@ -266,7 +265,9 @@ bool Nivel::nivelGanado() {
 	}
 	cout << "numero - 2"<<cantidadTubo-2 << endl;
 
-	return (numero == 0 && cont == 3 || numero > 1 && cont == cantidadTubo - 2);
+	if (numero == 0 && cont == 3 || numero > 1 && cont == cantidadTubo - 2) {
+		return true;
+	}
 	
 }
 

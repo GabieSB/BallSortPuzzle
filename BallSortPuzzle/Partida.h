@@ -11,6 +11,7 @@ private:
 	RenderWindow* ventana;
 	Tubo* tuboSeleccionado;
 	Nivel* movimientos;
+	
 	//se deberia crear una lista de niveles, este es temporal
 
 	//usuario

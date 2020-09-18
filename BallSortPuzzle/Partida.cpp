@@ -10,12 +10,12 @@ Partida::Partida() {
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
-	Texture *textura = new Texture();
+	Texture* textura = new Texture();
 	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
 	textura->loadFromFile(imagen);
-	Sprite *sprite = new Sprite(*textura);
+	Sprite* sprite = new Sprite(*textura);
 	sprite->setTexture(*textura);
-	//sprite->setPosition(2);
+	sprite->setPosition(Global::getInstance().getX(), Global::getInstance().getY());
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
@@ -47,8 +47,6 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 		ventana->draw(*sprite2);
 	}
 }
-
-
 
 void Partida::pushMovimiento() {
 
@@ -120,7 +118,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 }
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
-	if (xm > 530 && xm < 590 && ym < 40 && ym> 15) {
+	if (xm > 530 && xm < 590 && ym < 65 && ym> 10) {
 		nivel = NULL;
 		nivel = popMovimiento();
 		if (nivel != NULL) {
@@ -133,8 +131,6 @@ void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 		
 	}
 }
-
-
 
 void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 	Tubo* aux = tuboRecibe;
@@ -167,7 +163,7 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 }
 void Partida::clickSiguienteNivel(int xm, int ym) {
 
-	if (xm > 179 && xm < 433 && ym > 390 && ym < 397) {
+	if (xm > 180 && xm < 433 && ym > 395 && ym < 447) {
 		movimientos = NULL;
 		nivel->setIsCompleto(true);
 		nivel = new Nivel(nivel->getNumero() + 1);

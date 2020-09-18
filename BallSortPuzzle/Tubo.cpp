@@ -178,11 +178,13 @@ Bola* Tubo::getTope() {
 }
 
 void Tubo::seleccionarTope(RenderWindow *&ventana) {
-	
+	cout << cantidadActual;
 	if (pilaBolas != NULL) {
 		cout << "Se selecciona" << endl;
-		pilaBolas->getCircle()->move(0, -20);
+		int mov = -50 * (5 - cantidadActual);
+		pilaBolas->getCircle()->move(0, mov);
 		ventana->draw(*pilaBolas->getCircle());
+		cout << cantidadActual;
 		
 	}
 	this->estaSeleccionado = true;
@@ -191,7 +193,8 @@ void Tubo::seleccionarTope(RenderWindow *&ventana) {
 void Tubo::deseleccionarTope(RenderWindow*& ventana) {
 	cout << "Se deselecciona" << endl;
 	if (pilaBolas != NULL ) {
-		pilaBolas->getCircle()->move(0, 20);
+		int mov = 50 * (5 - cantidadActual);
+		pilaBolas->getCircle()->move(0, mov);
 		ventana->draw(*pilaBolas->getCircle());
 	}
 	this->estaSeleccionado = false;
