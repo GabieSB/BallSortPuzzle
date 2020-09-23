@@ -1,0 +1,15 @@
+#1>3
+[{4}
+rojo
+rojo
+rojo
+azul
+]
+[{1}
+rojo
+]
+[{3}
+azul
+azul
+azul
+]

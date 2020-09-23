@@ -26,6 +26,7 @@ public:
 	void dibujarPartida(RenderWindow*& ventana);
 	void analizarClicks(int x, int y, RenderWindow*& window);
 	void esClickEnRetroceder(int x, int y, RenderWindow*& window);
+	void esClickEnMenu(int x, int y, RenderWindow*& window);
 	void pushMovimiento();
 	Nivel* popMovimiento();
 	Nivel* copiarContenidoNivel(const Nivel*& viejo, Nivel* nuevo);
@@ -33,6 +34,7 @@ public:
 	void guardarPartida();
 	void nivelGanado(RenderWindow*& window);
 	void clickSiguienteNivel(int x, int y);
+	void dibujarMenu();
 	
 
 };

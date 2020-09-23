@@ -2,6 +2,7 @@
 #include "Tubo.h"
 #include "Bola.h"
 #include "Global.h"
+#include "fstream"
 class Nivel
 {
 private:
@@ -44,6 +45,7 @@ public:
 	int getNumero();
 	Color getColor(string name);
 	void generarTubo(int x, int y, string colores[]);
+	void guardarNivel();
 
 
 

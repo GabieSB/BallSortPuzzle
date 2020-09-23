@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 Bola::Bola() {
-	this->color = Color::Transparent;
+	this->color = "";
 	this->sig = NULL;
 	this->ant = NULL;
 	
@@ -49,8 +49,12 @@ void Bola::setAnt(Bola* ant) {
 	this->ant = ant;
 }
 
-void Bola::setColor(Color color) {
+void Bola::setColor(string color) {
 	this->color = color;
+}
+
+string Bola::getColor() {
+	return color;
 }
 void Bola::setX(int x) {
 	this->x = x;

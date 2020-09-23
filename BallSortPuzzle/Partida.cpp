@@ -27,12 +27,22 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 	Texture *textura1 = new Texture();
 	string imagen = "Resources/repetir.PNG";
 
+	Texture* textura2 = new Texture();
+	string imagen2 = "Resources/menu.PNG";
+
 	textura1->loadFromFile(imagen);
+	textura2->loadFromFile(imagen2);
 	
 	Sprite *sprite1 = new Sprite(*textura1);
+	Sprite* sprite2 = new Sprite(*textura2);
 	sprite1->setTexture(*textura1);
-	sprite1->setPosition(530, 5);
+	sprite1->setPosition(520, 5);
+	sprite2->setPosition(20, 5);
 	ventana->draw(*sprite1);
+	ventana->draw(*sprite2);
+
+
+
 
 	if (nivel->isCompleto()) {
 		
@@ -81,7 +91,11 @@ Nivel* Partida::popMovimiento() {
 	}
 	return nodoEliminado;
 }
+void Partida::dibujarMenu() {
 
+	
+
+}
 bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	int x ;
 	int y ;
@@ -112,6 +126,7 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 	esClickEnTubo(xm,ym,window);
 	esClickEnRetroceder(xm, ym, window);
+	esClickEnMenu(xm, ym, window);
 	if (nivel->isCompleto()) {
 		clickSiguienteNivel(xm, ym);
 	}
@@ -129,6 +144,16 @@ void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 			cout << "No hay mas movimientos" << endl;
 		}
 		
+	}
+}
+
+void Partida::esClickEnMenu(int xm, int ym, RenderWindow*& window) {
+	
+	if (xm > 20 && xm < 84 && ym > 14 && ym< 78) {
+		
+		cout << "click en menu" << endl;
+
+		guardarPartida();
 	}
 }
 
@@ -176,7 +201,8 @@ void Partida::nivelGanado(RenderWindow *&window) {
 }
 
 void Partida::guardarPartida() {
-	
+	nivel->guardarNivel();
+
 
 }
 

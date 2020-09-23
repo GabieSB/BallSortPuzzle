@@ -10,7 +10,7 @@ private:
 	CircleShape *circle;
 	int x;
 	int y;
-	Color color;
+	string color;
 	Bola* sig;
 	Bola* ant;
 
@@ -19,7 +19,7 @@ public:
 	Bola(const Bola& bola);
 	Bola( Bola* sig, Bola* ant);
 	Bola(CircleShape *circle);
-	void setColor(Color color);
+	void setColor(string color);
 	void setX(int x);
 	void setY(int y);
 	void setSig(Bola *sig);
@@ -27,6 +27,7 @@ public:
 	void setCircle(CircleShape *circle);
 	int getX();
 	int getY();
+	string getColor();
 	Bola* getAnt();
 	Bola* getSig();
 	CircleShape* getCircle();

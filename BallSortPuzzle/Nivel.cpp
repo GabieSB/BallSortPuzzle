@@ -4,7 +4,7 @@ Nivel::Nivel(int num) {
 	iniTubos = NULL;
 	numero = num;
 	Global::getInstance().setNivel(num);
-	if (num == 0) {
+	if (num == 1) {
 		cantidadTubo = 3;
 	}
 	else {
@@ -188,8 +188,10 @@ void Nivel::generarTubo(int x, int y, string colores[]) {
 		sf::CircleShape* esfera = new CircleShape();
 		esfera->setRadius(10);
 		esfera->setFillColor(getColor(colores[i]));
+		cout << "Color " << colores[i] << endl;
 
 		Bola* bola = new Bola(esfera);
+		bola->setColor(colores[i]);
 
 		tubo->push(bola);
 
@@ -288,6 +290,42 @@ bool Nivel::nivelGanado() {
 
  int Nivel::getNumero() {
 	 return numero;
+ }
+
+ void Nivel::guardarNivel() {
+	 ofstream archivo;
+	 archivo.open("partidas/prueba.txt", ios::out);
+
+	 archivo << "#"<<this->numero<< ">"<<this->cantidadTubo<<endl;
+	 Tubo* aux = iniTubos;
+	 while (aux!=NULL)
+	 {
+		 archivo << "[" ;
+		 if (aux->getTope() != NULL) {
+			 archivo << "{" << aux->getCantidadActual()<<"}" << endl;
+			 Bola* auxTope = aux->getTope();
+
+			 while (auxTope!=NULL)
+			 {
+				 archivo << auxTope->getColor() << endl;
+
+				 auxTope = auxTope->getAnt();
+
+			 }
+
+			 
+		}
+		 archivo << "]" << endl;
+		 aux = aux->getSig();
+	 }
+	
+
+
+	 
+
+	archivo.close();
+
+
  }
  /*101 , 337
 138 , 336
