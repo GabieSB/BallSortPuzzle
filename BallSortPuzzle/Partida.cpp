@@ -2,12 +2,14 @@
 
 Partida::Partida() {
 	tuboSeleccionado = NULL;
-	nivel = new Nivel(1);
+	nivel = new Nivel(Global::getInstance().getNivel());
 	movimientos = NULL;
 	ventana = NULL;
+	mov = 0;
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
+	//mov = 0;
 	Texture* textura = new Texture();
 	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
 	textura->loadFromFile(imagen);
@@ -139,11 +141,17 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 	if (xm > 530 && xm < 590 && ym < 65 && ym> 10) {
-		nivel = NULL;
-		nivel = popMovimiento();
-		if (nivel != NULL) {
-			cout << nivel->getTubos()->getCantidadActual();
-			nivel->dibujarNivel(window);
+		if (mov > 0) {
+			nivel = NULL;
+			nivel = popMovimiento();
+			if (nivel != NULL && mov > 0) {
+				mov--;
+				cout << nivel->getTubos()->getCantidadActual();
+				nivel->dibujarNivel(window);
+			}
+			else {
+				cout << "No hay mas movimientos" << endl;
+			}
 		}
 		else {
 			cout << "No hay mas movimientos" << endl;
@@ -169,6 +177,7 @@ void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
 
 void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 	Tubo* aux = tuboRecibe;
+	if (mov < 5) mov++;
 	if (aux->getTope() != NULL) {
 		CircleShape* circuloTopeRecibe = aux->getTope()->getCircle();
 		CircleShape* circuloTopeEnvia = tuboSeleccionado->getTope()->getCircle();
@@ -182,13 +191,11 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 		else {
 			cout << "no se puede colocar " << endl;
 			tuboSeleccionado->deseleccionarTope(window);
-
 		}
 	}
 	else {//si el tope esta vacio coloca directamente
 		pushMovimiento();
 		aux->push(tuboSeleccionado->pop());
-		
 		nivel->setMovimientos();
 
 	}
@@ -215,4 +222,3 @@ void Partida::guardarPartida() {
 
 
 }
-

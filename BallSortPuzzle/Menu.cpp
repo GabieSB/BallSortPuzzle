@@ -4,10 +4,12 @@ Menu::Menu(Partida* p) {
 }
 void Menu::botones(RenderWindow* v) {
 	//int posx, int posy, String nombre, 
+	titulo = new Boton(70,20,"5");
 	jugar = new Boton(180, 120, "1");
 	cargarp = new Boton(180, 200, "2");
 	acerca_de = new Boton(180, 280, "3");
 	salirp = new Boton(180, 360, "4");
+	v->draw(*titulo->getImagen());
 	v->draw(*jugar->getImagen());
 	v->draw(*cargarp->getImagen());
 	v->draw(*acerca_de->getImagen());
@@ -15,7 +17,7 @@ void Menu::botones(RenderWindow* v) {
 }
 
 void Menu::analizarClicks(int posx, int posy, RenderWindow*& window) {
-	window->clear(Color::White);
+	window->clear(Color::Color(25,43,26,255));
 	iniciar(posx, posy, window);
 	cargar(posx, posy, window);
 	acercade(posx, posy, window);

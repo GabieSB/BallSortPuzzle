@@ -12,6 +12,7 @@ private:
 	Tubo* tuboSeleccionado;
 	Nivel* movimientos;
 	String pantalla;
+	int mov;
 	//se deberia crear una lista de niveles, este es temporal
 
 	//usuario

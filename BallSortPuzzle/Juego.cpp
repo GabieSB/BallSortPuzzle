@@ -18,7 +18,7 @@ Juego::Juego(int ancho, int alto) {
 void Juego::gameLoop() {
 	
 	while (this->ventana->isOpen()) {
-		ventana->clear(Color::White);
+		ventana->clear(Color::Color(25, 43, 26, 255));
 		if (Global::getInstance().getPantalla() == 1) {
 			menu->botones(ventana);
 		}
