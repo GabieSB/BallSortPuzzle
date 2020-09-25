@@ -1,6 +1,4 @@
 #include "Partida.h"
-#include "Nivel.h"
-#include "Bola.h"
 
 Partida::Partida() {
 	tuboSeleccionado = NULL;
@@ -24,23 +22,29 @@ void Partida::cargarPartida(RenderWindow *&ventana) {
 void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 
-	Texture *textura1 = new Texture();
+	Texture* textura1 = new Texture();
 	string imagen = "Resources/repetir.PNG";
 
 	Texture* textura2 = new Texture();
 	string imagen2 = "Resources/menu.PNG";
 
+	Texture* textura3 = new Texture();
+	string imagen3 = "Resources/save.PNG";
+
 	textura1->loadFromFile(imagen);
 	textura2->loadFromFile(imagen2);
-	
-	Sprite *sprite1 = new Sprite(*textura1);
+	textura3->loadFromFile(imagen3);
+
+	Sprite* sprite1 = new Sprite(*textura1);
 	Sprite* sprite2 = new Sprite(*textura2);
+	Sprite* sprite3 = new Sprite(*textura3);
 	sprite1->setTexture(*textura1);
 	sprite1->setPosition(520, 5);
 	sprite2->setPosition(20, 5);
+	sprite3->setPosition(280, 5);
 	ventana->draw(*sprite1);
 	ventana->draw(*sprite2);
-
+	ventana->draw(*sprite3);
 
 
 
@@ -127,6 +131,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 	esClickEnTubo(xm,ym,window);
 	esClickEnRetroceder(xm, ym, window);
 	esClickEnMenu(xm, ym, window);
+	esClickEnGuardar(xm, ym, window);
 	if (nivel->isCompleto()) {
 		clickSiguienteNivel(xm, ym);
 	}
@@ -148,12 +153,17 @@ void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 }
 
 void Partida::esClickEnMenu(int xm, int ym, RenderWindow*& window) {
-	
+	//Pantalla
 	if (xm > 20 && xm < 84 && ym > 14 && ym< 78) {
-		
-		cout << "click en menu" << endl;
+		Global::getInstance().setPantalla(1);
+	}
+}
 
-		guardarPartida();
+void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
+	
+	if (xm > 290 && xm < 337 && ym > 10 && ym < 60) {
+		
+
 	}
 }
 

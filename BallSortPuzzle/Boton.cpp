@@ -1,12 +1,14 @@
 #include "Boton.h"
-
-Boton::Boton(float posx, float posy, float width, float heigth, Color color, String nombre)
+Boton::Boton(float posx, float posy, String nombre)
 {
-	btn = new RectangleShape({ width, heigth });
-	btn->setFillColor(color);
-	btn->setPosition(posx, posy);
+	this->btn = new Texture();
+	nombre = "Resources/boton" + nombre + ".PNG";
+	btn->loadFromFile(nombre);
+	this->imagen = new Sprite(*btn);
+	imagen->setTexture(*btn);
+	imagen->setPosition(posx, posy);
 }
 
-RectangleShape* Boton::getRect() {
-	return btn;
+Sprite* Boton::getImagen() {
+	return imagen;
 }

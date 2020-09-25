@@ -9,11 +9,10 @@ using namespace std;
 using namespace sf;
 class Menu {
 private:
-	Boton* btn1, * btn2, * btn3, * btn4;
-	Text* txt1, * txt2, * txt3, * txt4;
+	Boton* jugar, * cargarp, * acerca_de, * salirp;
 	Partida* partida;
 public:
-	Menu(Partida *p);
+	Menu(Partida* p);
 	void botones(RenderWindow* v);
 	void analizarClicks(int posx, int posy, RenderWindow*& window);
 	void iniciar(int posx, int posy, RenderWindow* v);
