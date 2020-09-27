@@ -12,26 +12,33 @@ Juego::Juego(int ancho, int alto) {
 	partida = new Partida();
 	menu = new Menu(partida);
 	gameLoop();
+	evento = true;
 	
 }
 
 void Juego::gameLoop() {
 	
 	while (this->ventana->isOpen()) {
-		ventana->clear(Color::Color(25, 43, 26, 255));
-		if (Global::getInstance().getPantalla() == 1) {
-			menu->botones(ventana);
+
+		if (evento) {
+			ventana->clear(Color::Color(25, 43, 26, 255));
+			if (Global::getInstance().getPantalla() == 1) {
+				menu->botones(ventana);
+			}
+			else {
+				partida->cargarPartida(ventana);
+				evento = false;
+			}
+			ventana->display();
 		}
-		else {
-			partida->cargarPartida(ventana);
-		}
+	
 		
 		
-		ventana->display();
+		
 		Event event;
 		while (this->ventana->pollEvent(event)) {
 		
-
+			
 			analizarEventos(event);
 			
 		}
@@ -44,6 +51,7 @@ void Juego::analizarEventos(Event event) {
 		ventana->close();
 	}
 	else if (event.type == Event::MouseButtonPressed) {
+		evento = true;
 		cout << Mouse::getPosition(*ventana).x << " , " << Mouse::getPosition(*ventana).y << endl;
 		int x = Mouse::getPosition(*ventana).x;
 		int y = Mouse::getPosition(*ventana).y;

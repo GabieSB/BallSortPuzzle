@@ -15,6 +15,7 @@ private:
 	int ancho;
 	int alto;
 	String imagen;
+	bool evento;
 
 
 public:

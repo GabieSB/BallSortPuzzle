@@ -8,10 +8,12 @@ Partida::Partida() {
 	mov = 0;
 	nivelCompleto = false;
 	enRepeticion = false;
+	hayCambios = true;
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
 	//mov = 0;
+	cout << "En cargar partida" << endl;
 	Texture* textura = new Texture();
 	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
 	textura->loadFromFile(imagen);

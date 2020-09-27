@@ -17,6 +17,7 @@ private:
 	int mov;
 	bool nivelCompleto;
 	bool enRepeticion;
+	bool hayCambios;
 	//se deberia crear una lista de niveles, este es temporal
 
 	//usuario
