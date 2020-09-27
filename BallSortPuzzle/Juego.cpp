@@ -11,25 +11,36 @@ Juego::Juego(int ancho, int alto) {
 	Global::getInstance().setWindow(ventana);
 	partida = new Partida();
 	menu = new Menu(partida);
-	gameLoop();
 	evento = true;
+	
+	gameLoop();
+	
 	
 }
 
 void Juego::gameLoop() {
-	
+	bool cargarBotones = true;
 	while (this->ventana->isOpen()) {
 
-		if (evento) {
-			ventana->clear(Color::Color(25, 43, 26, 255));
-			if (Global::getInstance().getPantalla() == 1) {
-				menu->botones(ventana);
+		if (evento ) {
+			
+			if (Global::getInstance().getPantalla() == 1 ) {
+
+				if (cargarBotones) {
+					ventana->clear(Color::Color(25, 43, 26, 255));
+					menu->botones(ventana);
+					cargarBotones = false;
+					ventana->display();
+				}
+			
 			}
 			else {
+				ventana->clear(Color::Color(25, 43, 26, 255));
 				partida->cargarPartida(ventana);
 				evento = false;
+				ventana->display();
 			}
-			ventana->display();
+		
 		}
 	
 		

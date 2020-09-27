@@ -23,7 +23,7 @@ void Partida::cargarPartida(RenderWindow *&ventana) {
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
-	
+	hayCambios = false;
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -59,7 +59,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 		if (nivelCompleto) {
 			if (!enRepeticion) {
-			
+				
 				reproducirMovimientos(ventana);
 			
 				enRepeticion = true;
@@ -69,7 +69,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 			}
 		
 		}
-
+		hayCambios = true;
 		nivelCompleto = true;
 	}
 
@@ -275,6 +275,9 @@ void Partida::reproducirMovimientos(RenderWindow *&window) {
 
 }
 
+bool  Partida::HayCambios() {
+	return hayCambios;
+}
 void Partida::guardarPartida() {
 	nivel->guardarNivel();
 

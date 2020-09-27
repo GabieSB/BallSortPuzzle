@@ -18,6 +18,7 @@ private:
 	bool nivelCompleto;
 	bool enRepeticion;
 	bool hayCambios;
+
 	//se deberia crear una lista de niveles, este es temporal
 
 	//usuario
@@ -43,6 +44,7 @@ public:
 	void clickSiguienteNivel(int x, int y);
 	void dibujarMenu();
 	void reproducirMovimientos(RenderWindow*& window);
+	bool HayCambios();
 	
 
 };
