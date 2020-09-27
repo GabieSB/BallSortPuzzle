@@ -1,2 +1,4 @@
-﻿  Juego.cpp
-  BallSortPuzzle.vcxproj -> C:\Users\serra\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
+﻿  Partida.cpp
+E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,78): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,48): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  BallSortPuzzle.vcxproj -> E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe

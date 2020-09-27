@@ -35,6 +35,7 @@ public:
 	void esClickEnRetroceder(int x, int y, RenderWindow*& window);
 	void esClickEnMenu(int x, int y, RenderWindow*& window);
 	void esClickEnGuardar(int x, int y, RenderWindow*& window);
+	void esClickEnReproducir(int x, int y, RenderWindow*& window);
 	void pushMovimiento();
 	Nivel* popMovimiento();
 	Nivel* copiarContenidoNivel(const Nivel*& viejo, Nivel* nuevo);

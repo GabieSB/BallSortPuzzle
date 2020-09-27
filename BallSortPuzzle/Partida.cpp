@@ -37,21 +37,28 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 	Texture* textura3 = new Texture();
 	string imagen3 = "Resources/save.PNG";
+	
+	Texture* textura4 = new Texture();
+	string imagen4 = "Resources/reproducir.PNG";
 
 	textura1->loadFromFile(imagen);
 	textura2->loadFromFile(imagen2);
 	textura3->loadFromFile(imagen3);
+	textura4->loadFromFile(imagen4);
 
 	Sprite* sprite1 = new Sprite(*textura1);
 	Sprite* sprite2 = new Sprite(*textura2);
 	Sprite* sprite3 = new Sprite(*textura3);
+	Sprite* sprite4 = new Sprite(*textura4);
 	sprite1->setTexture(*textura1);
 	sprite1->setPosition(520, 5);
 	sprite2->setPosition(20, 5);
 	sprite3->setPosition(280, 5);
+	sprite4->setPosition(500,200);
 	ventana->draw(*sprite1);
 	ventana->draw(*sprite2);
 	ventana->draw(*sprite3);
+	ventana->draw(*sprite4);
 
 
 
@@ -158,6 +165,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 	esClickEnRetroceder(xm, ym, window);
 	esClickEnMenu(xm, ym, window);
 	esClickEnGuardar(xm, ym, window);
+	esClickEnReproducir(xm, ym, window);
 	if (nivelCompleto) {
 		clickSiguienteNivel(xm, ym);
 	}
@@ -195,6 +203,13 @@ void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
 	
 	if (xm > 290 && xm < 337 && ym > 10 && ym < 60) {
 		
+
+	}
+}
+
+void Partida::esClickEnReproducir(int xm, int ym, RenderWindow*& window) {
+
+	if (xm > 510 && xm < 585 && ym > 210 && ym < 280) {
 
 	}
 }
@@ -280,6 +295,4 @@ bool  Partida::HayCambios() {
 }
 void Partida::guardarPartida() {
 	nivel->guardarNivel();
-
-
 }
