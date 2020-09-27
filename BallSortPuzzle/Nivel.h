@@ -9,10 +9,11 @@ private:
 	Tubo* iniTubos;
 	int numero;
 	int cantidadTubo;
+	int cantMovimientos;
 	bool isPassed;
 	Nivel* sig;
 	Nivel* ant;
-	int movimientos;
+	//Movimiento* movimientos;
 	Texture *textura1;
 	Sprite *sprite1;
 	String imagen;
@@ -41,11 +42,15 @@ public:
 	Nivel* getAnt();
 	Nivel* getSig();
 	void setMovimientos();
-	int getMovimientos();
+	int getCantMovimientos();
 	int getNumero();
 	Color getColor(string name);
 	void generarTubo(int x, int y, string colores[]);
 	void guardarNivel();
+	/*void pushMovimiento(int x, int y);
+	Movimiento* popMovimiento();
+	Movimiento* getMovimientos();*/
+	
 
 
 

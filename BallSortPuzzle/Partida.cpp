@@ -1,11 +1,13 @@
 #include "Partida.h"
-
+#include <dos.h> //for delay
 Partida::Partida() {
 	tuboSeleccionado = NULL;
 	nivel = new Nivel(Global::getInstance().getNivel());
 	movimientos = NULL;
 	ventana = NULL;
 	mov = 0;
+	nivelCompleto = false;
+	enRepeticion = false;
 }
 
 void Partida::cargarPartida(RenderWindow *&ventana) {
@@ -19,6 +21,7 @@ void Partida::cargarPartida(RenderWindow *&ventana) {
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
+	
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -51,15 +54,32 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 
 
 	if (nivel->isCompleto()) {
+
+		if (nivelCompleto) {
+			if (!enRepeticion) {
+			
+				reproducirMovimientos(ventana);
+			
+				enRepeticion = true;
+
+				cout << "Se termino de reproducir los movimientos" << endl;
+
+			}
 		
+		}
+
+		nivelCompleto = true;
+	}
+
+	if (nivelCompleto && enRepeticion) {
+
 		Texture* textura2 = new Texture();
 		string imagen2 = "Resources/win.jpg";
 
 		if (!textura2->loadFromFile(imagen2))cout << "no se carga la imagen<<";
-
 		Sprite* sprite2 = new Sprite(*textura2);
 		sprite2->setTexture(*textura2);
-		sprite2->setPosition(60,90);
+		sprite2->setPosition(60, 90);
 		ventana->draw(*sprite2);
 	}
 }
@@ -68,6 +88,7 @@ void Partida::pushMovimiento() {
 
 	Nivel* nuevo = new Nivel(*nivel);
 
+	if (nuevo->isCompleto()) nuevo->setIsCompleto(false);
 
 	cout << "Se guardo el movimiento" << endl;
 
@@ -116,8 +137,9 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 				tuboSeleccionado = aux;
 			}
 			else {
-
+				//nivel->pushMovimiento(xm, ym);
 				realizarMovimiento(aux, window);
+				
 			}
 
 			return true;
@@ -134,7 +156,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 	esClickEnRetroceder(xm, ym, window);
 	esClickEnMenu(xm, ym, window);
 	esClickEnGuardar(xm, ym, window);
-	if (nivel->isCompleto()) {
+	if (nivelCompleto) {
 		clickSiguienteNivel(xm, ym);
 	}
 }
@@ -186,10 +208,12 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 			pushMovimiento();
 			aux->push(tuboSeleccionado->pop());
 			nivel->setMovimientos();
-			if (nivel->nivelGanado()) nivelGanado(window);//ANALIZA SII GAAAAA
+			
+			if(nivel->nivelGanado()) pushMovimiento();
 		}
 		else {
 			cout << "no se puede colocar " << endl;
+			//nivel->popMovimiento();
 			tuboSeleccionado->deseleccionarTope(window);
 		}
 	}
@@ -208,13 +232,45 @@ void Partida::clickSiguienteNivel(int xm, int ym) {
 	if (xm > 180 && xm < 433 && ym > 395 && ym < 447) {
 		movimientos = NULL;
 		nivel->setIsCompleto(true);
+		nivelCompleto = false;
+		enRepeticion = false;
 		nivel = new Nivel(nivel->getNumero() + 1);
 	}
 }
 void Partida::nivelGanado(RenderWindow *&window) {
 	cout << "GANAAASTEEEE!" << endl;
+	reproducirMovimientos(window);
 	nivel->setIsCompleto(true);
 	
+}
+
+void Partida::reproducirMovimientos(RenderWindow *&window) {
+	cout << "Sleping" << endl;
+	cout << "TOTA MOVIMIENTOS " << mov << endl;
+	
+	int cont = 0;
+	Nivel* aux = movimientos;
+	while (aux != NULL) {
+		cont++;
+		if (aux->getAnt() == NULL) break;
+		aux = aux->getAnt();
+
+	}
+
+	while (aux != NULL) {
+		cont--;
+		cout << "movimeinto " << cont << endl;
+		nivel = aux;
+		window->clear(Color::Color(25, 43, 26, 255));
+		cargarPartida(window);
+		window->display();
+		Sleep(1000);
+		aux = aux->getSig();
+
+	}
+	cout << "sale del while" << endl;
+
+
 }
 
 void Partida::guardarPartida() {

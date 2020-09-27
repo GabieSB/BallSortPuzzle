@@ -2,7 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "Nivel.h"
 #include "Tubo.h"
+#include "Movimiento.h"
 #include "Global.h"
+#include<windows.h>
 #include <iostream>
 
 class Partida{
@@ -13,6 +15,8 @@ private:
 	Nivel* movimientos;
 	String pantalla;
 	int mov;
+	bool nivelCompleto;
+	bool enRepeticion;
 	//se deberia crear una lista de niveles, este es temporal
 
 	//usuario
@@ -37,6 +41,7 @@ public:
 	void nivelGanado(RenderWindow*& window);
 	void clickSiguienteNivel(int x, int y);
 	void dibujarMenu();
+	void reproducirMovimientos(RenderWindow*& window);
 	
 
 };

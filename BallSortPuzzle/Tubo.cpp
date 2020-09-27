@@ -78,11 +78,6 @@ void Tubo::push( Bola *bola) {
 
 	}
 }
-/*  
-void Tubo::setWindow(RenderWindow* ventana) {
-	this->ventana = ventana;
-
-}*/
 
 Bola* Tubo::pop() {
 	Bola* nodoEliminado = pilaBolas;

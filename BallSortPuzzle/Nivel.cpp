@@ -1,4 +1,5 @@
 #include "Nivel.h"
+#include "Movimiento.h"
 
 Nivel::Nivel(int num) {
 	iniTubos = NULL;
@@ -12,7 +13,8 @@ Nivel::Nivel(int num) {
 	}
 
 	isPassed = false;
-	movimientos = 0;
+	cantMovimientos = 0;
+	//movimientos = NULL;
 
 	cargarNivel(num);
 	
@@ -22,7 +24,7 @@ Nivel::Nivel(const Nivel& nivel) {
 	numero = nivel.numero;
 	cantidadTubo = nivel.cantidadTubo;
 	isPassed = nivel.isPassed;
-	movimientos = nivel.movimientos;
+	cantMovimientos = nivel.cantMovimientos;
 	iniTubos = NULL;
 	//copiar tubos
 	Tubo* aux = new Tubo();
@@ -254,9 +256,9 @@ bool Nivel::nivelGanado() {
 	Tubo* aux = iniTubos;
 	int cont = 0;
 
-
+	cout << "nivel ganado ? " << endl;
 	while (aux != NULL) {
-		
+		cout << "aux cant act " << aux->getCantidadActual() << endl;
 		if (aux->getCantidadActual() == 4) {
 			cont++;
 		}
@@ -267,9 +269,13 @@ bool Nivel::nivelGanado() {
 	}
 	cout << "numero - 2"<<cantidadTubo-2 << endl;
 
-	if (numero == 0 && cont == 3 || numero > 1 && cont == cantidadTubo - 2) {
+	if (numero == 1 && cont == 2 || numero > 1 && cont == cantidadTubo - 2) {
+		cout << "Is passed" << endl;
+		isPassed = true;
 		return true;
 	}
+
+	//return false;
 	
 }
 
@@ -278,10 +284,10 @@ bool Nivel::nivelGanado() {
  }
 
  void Nivel::setMovimientos() {
-	 movimientos++;
+	 cantMovimientos++;
  }
- int Nivel::getMovimientos() {
-	 return movimientos;
+ int Nivel::getCantMovimientos() {
+	 return cantMovimientos;
 
  }
  void Nivel::setTubos(Tubo *tubos) {
@@ -320,13 +326,40 @@ bool Nivel::nivelGanado() {
 	 }
 	
 
-
-	 
-
 	archivo.close();
 
 
  }
+ /*  
+ void Nivel::pushMovimiento(int x, int y) {
+	 cantMovimientos++;
+	 if (this->movimientos == NULL) {
+		 this->movimientos = new Movimiento(x, y, NULL, NULL);
+	 }
+	 else {
+		 Movimiento* nuevo = new Movimiento(x, y, NULL,this-> movimientos);
+		 this->movimientos->setSig(nuevo);
+		 this->movimientos = nuevo;
+	 }
+ }
+
+ Movimiento* Nivel::popMovimiento() {
+	 Movimiento* nodoEliminado = movimientos;
+	 if (movimientos != NULL) {
+
+		 movimientos->setSig(NULL);
+		 movimientos = movimientos->getAnt();
+		 cantMovimientos--;
+
+	 }
+	 return nodoEliminado;
+ }
+
+ Movimiento* Nivel::getMovimientos() {
+
+	 return movimientos;
+
+ }*/
  /*101 , 337
 138 , 336
 100 , 131

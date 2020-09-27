@@ -147,6 +147,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Movimiento.h" />
     <ClInclude Include="Nivel.h" />
     <ClInclude Include="Partida.h" />
     <ClInclude Include="Tubo.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Movimiento.cpp" />
     <ClCompile Include="Nivel.cpp" />
     <ClCompile Include="Partida.cpp" />
     <ClCompile Include="Tubo.cpp" />
