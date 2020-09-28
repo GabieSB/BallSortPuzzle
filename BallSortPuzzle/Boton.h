@@ -10,11 +10,9 @@ class Boton {
 private:
 	Texture* btn;
 	Sprite* imagen;
-	Font fuente;
-	Text txt_btn;
 
 public:
-	Boton(float posx, float posy, String nombre);
+	Boton(float posx, float posy);
 	Sprite* getImagen();
 };
 

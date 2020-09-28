@@ -27,44 +27,11 @@ void Partida::pintarPartidaGeneral(RenderWindow *&ventana) {
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
-
-
-	Texture* textura1 = new Texture();
-	string imagen = "Resources/repetir.PNG";
-
-	Texture* textura2 = new Texture();
-	string imagen2 = "Resources/menu.PNG";
-
-	Texture* textura3 = new Texture();
-	string imagen3 = "Resources/save.PNG";
-	
-	
-
-	textura1->loadFromFile(imagen);
-	textura2->loadFromFile(imagen2);
-	textura3->loadFromFile(imagen3);
-
-	Sprite* sprite1 = new Sprite(*textura1);
-	Sprite* sprite2 = new Sprite(*textura2);
-	Sprite* sprite3 = new Sprite(*textura3);
-
-	sprite1->setTexture(*textura1);
-	sprite1->setPosition(520, 6);
-	sprite2->setPosition(17, 6);
-	sprite3->setPosition(280, 6);
-
-	ventana->draw(*sprite1);
-	//ventana->draw(*sprite2);
-	ventana->draw(*sprite3);
-
-
-
 	
 	if (pintarImagenNivelCompleto) {
 		pintarNivelGanado(ventana);
 	}
 
-	ventana->draw(*sprite2);
 }
 
 void Partida::pintarNivelGanado(RenderWindow*& window) {
@@ -188,7 +155,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 }
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
-	if (xm > 530 && xm < 590 && ym < 65 && ym> 10) {
+	if (xm > 195 && xm < 238 && ym < 29 && ym> 69) {
 		cout << "es click en retroceder" << endl;
 		if (mov > 0) {
 			nivel = NULL;
@@ -211,15 +178,14 @@ void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 
 void Partida::esClickEnMenu(int xm, int ym, RenderWindow*& window) {
 	//Pantalla
-	if (xm > 20 && xm < 84 && ym > 14 && ym< 78) {
+	if (xm > 40 && xm < 87 && ym > 32 && ym< 66) {
 		Global::getInstance().setPantalla(1);
 	}
 }
 
 void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
 	
-	if (xm > 290 && xm < 337 && ym > 10 && ym < 60) {
-		
+	if (xm > 194 && xm < 240 && ym > 30 && ym < 70) {
 		guardarPartida();
 	}
 }
