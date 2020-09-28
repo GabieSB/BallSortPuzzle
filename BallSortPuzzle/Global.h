@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics\RenderWindow.hpp>
 
+
 using namespace sf;
 class Global
 {
@@ -13,6 +14,7 @@ private:
 	int posX;
 	int posY;
 	RenderWindow* ventana;
+	//Partida* partida;
 public:
 	static Global &getInstance();
 	int getPantalla();
@@ -21,6 +23,8 @@ public:
 	void setNivel(int n);
 	int getX();
 	int getY();
+	//Partida* getPartida();
+	//void setPartida(Partida *partida);
 	RenderWindow* getWindow();
 	void setWindow(RenderWindow* v);
 };

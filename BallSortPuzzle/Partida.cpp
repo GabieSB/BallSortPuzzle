@@ -7,13 +7,13 @@ Partida::Partida() {
 	ventana = NULL;
 	mov = 0;
 	nivelCompleto = false;
-	enRepeticion = false;
-	hayCambios = true;
+	pintarImagenNivelCompleto = false;
+	iniCoordenas = NULL;
 }
 
-void Partida::cargarPartida(RenderWindow *&ventana) {
+void Partida::pintarPartidaGeneral(RenderWindow *&ventana) {
 	//mov = 0;
-	cout << "En cargar partida" << endl;
+	
 	Texture* textura = new Texture();
 	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
 	textura->loadFromFile(imagen);
@@ -23,7 +23,7 @@ void Partida::cargarPartida(RenderWindow *&ventana) {
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
-	hayCambios = false;
+	pintarImagenNivelCompleto = false;
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -38,59 +38,45 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 	Texture* textura3 = new Texture();
 	string imagen3 = "Resources/save.PNG";
 	
-	Texture* textura4 = new Texture();
-	string imagen4 = "Resources/reproducir.PNG";
+	
 
 	textura1->loadFromFile(imagen);
 	textura2->loadFromFile(imagen2);
 	textura3->loadFromFile(imagen3);
-	textura4->loadFromFile(imagen4);
 
 	Sprite* sprite1 = new Sprite(*textura1);
 	Sprite* sprite2 = new Sprite(*textura2);
 	Sprite* sprite3 = new Sprite(*textura3);
-	Sprite* sprite4 = new Sprite(*textura4);
+
 	sprite1->setTexture(*textura1);
-	sprite1->setPosition(520, 5);
-	sprite2->setPosition(20, 5);
-	sprite3->setPosition(280, 5);
-	sprite4->setPosition(500,200);
+	sprite1->setPosition(520, 6);
+	sprite2->setPosition(17, 6);
+	sprite3->setPosition(280, 6);
+
 	ventana->draw(*sprite1);
-	ventana->draw(*sprite2);
+	//ventana->draw(*sprite2);
 	ventana->draw(*sprite3);
-	ventana->draw(*sprite4);
 
 
 
-	if (nivel->isCompleto()) {
-
-		if (nivelCompleto) {
-			if (!enRepeticion) {
-				
-				reproducirMovimientos(ventana);
-			
-				enRepeticion = true;
-
-				cout << "Se termino de reproducir los movimientos" << endl;
-
-			}
-		
-		}
-		hayCambios = true;
-		nivelCompleto = true;
+	
+	if (pintarImagenNivelCompleto) {
+		pintarNivelGanado(ventana);
 	}
 
-	if (nivelCompleto && enRepeticion) {
+	ventana->draw(*sprite2);
+}
 
-		Texture* textura2 = new Texture();
-		string imagen2 = "Resources/win.jpg";
+void Partida::pintarNivelGanado(RenderWindow*& window) {
 
-		if (!textura2->loadFromFile(imagen2))cout << "no se carga la imagen<<";
-		Sprite* sprite2 = new Sprite(*textura2);
-		sprite2->setTexture(*textura2);
-		sprite2->setPosition(60, 90);
-		ventana->draw(*sprite2);
-	}
+	Texture* textura5 = new Texture();
+	string imagen5 = "Resources/nivel.png";
+
+	if (!textura5->loadFromFile(imagen5))cout << "no se carga la imagen<<";
+	Sprite* sprite5 = new Sprite(*textura5);
+	sprite5->setTexture(*textura5);
+	sprite5->setPosition(0, 0);
+	window->draw(*sprite5);
 }
 
 void Partida::pushMovimiento() {
@@ -98,8 +84,6 @@ void Partida::pushMovimiento() {
 	Nivel* nuevo = new Nivel(*nivel);
 
 	if (nuevo->isCompleto()) nuevo->setIsCompleto(false);
-
-	cout << "Se guardo el movimiento" << endl;
 
 	if (movimientos == NULL) {
 		nuevo->setSig(NULL);
@@ -117,7 +101,6 @@ void Partida::pushMovimiento() {
 	}
 }
 Nivel* Partida::popMovimiento() {
-	cout << "se saca un  nive" << endl;
 	Nivel* nodoEliminado = movimientos;
 	if (movimientos != NULL) {
 
@@ -127,10 +110,36 @@ Nivel* Partida::popMovimiento() {
 	}
 	return nodoEliminado;
 }
-void Partida::dibujarMenu() {
+void Partida::cargarPartida(RenderWindow *& window) {
+	ifstream archivo("partidas/prueba.txt");
+	string line;
+	int cx;
+	int cy;
+	while (getline(archivo, line)) {
+		if (line[0] == '#') {
 
-	
+			int num = line[1] - '0';
+		
+			nivel = new Nivel(num);
+		}
+		else {
+			string number = "";
+			for (int i = 0; i < line.length(); i++) {
+				if (line[i] != ',') {
+					number += line[i];
+				}
+				else {
+					cx = stoi(number);
+					number = "";
+				}
+			}
+			cy = stoi(number);
 
+			esClickEnTubo(cx,cy, window);
+		}
+
+	}
+	archivo.close();
 }
 bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	int x ;
@@ -143,12 +152,19 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 
 			if (tuboSeleccionado == NULL) {
 				aux->seleccionarTope(window);
+				this->auxX = xm;
+				this->auxY = ym;
 				tuboSeleccionado = aux;
+				
 			}
 			else {
 				//nivel->pushMovimiento(xm, ym);
-				realizarMovimiento(aux, window);
+				if (realizarMovimiento(aux, window)) {
+					guardarCoordenadasMovimiento(this->auxX, this->auxY);
+					guardarCoordenadasMovimiento(xm, ym);
 				
+				}
+								
 			}
 
 			return true;
@@ -173,6 +189,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 	if (xm > 530 && xm < 590 && ym < 65 && ym> 10) {
+		cout << "es click en retroceder" << endl;
 		if (mov > 0) {
 			nivel = NULL;
 			nivel = popMovimiento();
@@ -203,20 +220,23 @@ void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
 	
 	if (xm > 290 && xm < 337 && ym > 10 && ym < 60) {
 		
-
+		guardarPartida();
 	}
 }
 
 void Partida::esClickEnReproducir(int xm, int ym, RenderWindow*& window) {
 
-	if (xm > 510 && xm < 585 && ym > 210 && ym < 280) {
-
+	if (xm > 129 && xm < 490 && ym > 388 && ym < 455) {
+		cout << "click en reproducirr" << endl;
+		reproducirMovimientos(window);
+		pintarImagenNivelCompleto = true;
 	}
 }
 
-void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
+bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
+	bool seRealizo = true;;
 	Tubo* aux = tuboRecibe;
-	if (mov < 5) mov++;
+	if (mov < 5)mov++;
 	if (aux->getTope() != NULL) {
 		CircleShape* circuloTopeRecibe = aux->getTope()->getCircle();
 		CircleShape* circuloTopeEnvia = tuboSeleccionado->getTope()->getCircle();
@@ -225,32 +245,43 @@ void Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 			pushMovimiento();
 			aux->push(tuboSeleccionado->pop());
 			nivel->setMovimientos();
-			
-			if(nivel->nivelGanado()) pushMovimiento();
+			mov++;
+
+			if (nivel->nivelGanado()) { 
+				pintarImagenNivelCompleto = true;
+				nivelCompleto = true;
+				pushMovimiento(); 
+			}
 		}
 		else {
 			cout << "no se puede colocar " << endl;
-			//nivel->popMovimiento();
+			seRealizo = false;
 			tuboSeleccionado->deseleccionarTope(window);
 		}
 	}
 	else {//si el tope esta vacio coloca directamente
 		pushMovimiento();
+		mov++;
 		aux->push(tuboSeleccionado->pop());
 		nivel->setMovimientos();
 
 	}
+
 	tuboSeleccionado = NULL;
+	return seRealizo;
 
 
 }
 void Partida::clickSiguienteNivel(int xm, int ym) {
 
-	if (xm > 180 && xm < 433 && ym > 395 && ym < 447) {
+	if (xm > 120 && xm < 490 && ym > 286 && ym < 355) {
+		cout << "siguiente" << endl;
 		movimientos = NULL;
 		nivel->setIsCompleto(true);
 		nivelCompleto = false;
 		enRepeticion = false;
+		pintarImagenNivelCompleto = false;
+		iniCoordenas = NULL;
 		nivel = new Nivel(nivel->getNumero() + 1);
 	}
 }
@@ -279,7 +310,7 @@ void Partida::reproducirMovimientos(RenderWindow *&window) {
 		cout << "movimeinto " << cont << endl;
 		nivel = aux;
 		window->clear(Color::Color(25, 43, 26, 255));
-		cargarPartida(window);
+		pintarPartidaGeneral(window);
 		window->display();
 		Sleep(1000);
 		aux = aux->getSig();
@@ -290,9 +321,37 @@ void Partida::reproducirMovimientos(RenderWindow *&window) {
 
 }
 
-bool  Partida::HayCambios() {
-	return hayCambios;
+void Partida::guardarCoordenadasMovimiento(int x, int y) {
+	cout << "se guarda   " << x << "  " << y << endl;
+	
+	if (iniCoordenas == NULL) {
+		iniCoordenas = new Movimiento(x, y, NULL, NULL);
+	}
+	else {
+		Movimiento* aux = iniCoordenas;
+
+		while (aux->getSig() != NULL) {
+			aux = aux->getSig();
+		}
+
+		Movimiento* nuevo = new Movimiento(x, y, NULL, aux);
+		aux->setSig(nuevo);
+	}
 }
+
 void Partida::guardarPartida() {
-	nivel->guardarNivel();
+	
+	ofstream archivo;
+	archivo.open("partidas/prueba.txt", ios::out);
+
+	archivo << "#" << nivel->getNumero() << endl;
+	Movimiento* aux = iniCoordenas;
+
+	while (aux != NULL) {
+		archivo << aux->getX() << "," << aux->getY() << endl;
+		aux = aux->getSig();
+	}
+
+	
+	
 }

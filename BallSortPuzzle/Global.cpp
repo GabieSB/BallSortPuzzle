@@ -3,6 +3,7 @@ Global::Global() {
 	pantalla = 1;
 	ventana = nullptr;
 	nivel = 1;
+
 }
 
 Global &Global::getInstance() {
@@ -21,6 +22,17 @@ void Global::setPantalla(int p) {
 int Global::getNivel() {
 	return this->nivel;
 }
+
+/* 
+void Global::setPartida(Partida *p) {
+	this->partida = p;
+}
+
+Partida* Global::getPartida() {
+	return this->partida;
+}*/
+
+
 
 void Global::setNivel(int n) {
 	this->nivel = n;

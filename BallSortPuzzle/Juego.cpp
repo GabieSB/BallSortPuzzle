@@ -9,7 +9,9 @@ Juego::Juego(int ancho, int alto) {
 	this->alto = alto;
 	ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
 	Global::getInstance().setWindow(ventana);
+	
 	partida = new Partida();
+	//Global::getInstance().setPartida(partida);
 	menu = new Menu(partida);
 	evento = true;
 	
@@ -34,11 +36,17 @@ void Juego::gameLoop() {
 				}
 			
 			}
-			else {
+			else if(Global::getInstance().getPantalla() == 2) {
 				ventana->clear(Color::Color(25, 43, 26, 255));
-				partida->cargarPartida(ventana);
+				partida->pintarPartidaGeneral(ventana);
 				evento = false;
 				ventana->display();
+			}
+			else {
+
+				partida->cargarPartida(this->ventana);
+				Global::getInstance().setPantalla(2);
+
 			}
 		
 		}

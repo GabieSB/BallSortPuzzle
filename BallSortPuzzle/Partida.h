@@ -6,18 +6,25 @@
 #include "Global.h"
 #include<windows.h>
 #include <iostream>
+#include <fstream>
+//#include "fstream"
 
 class Partida{
 private:
-	Nivel *nivel;
+
+
 	RenderWindow* ventana;
+	Nivel* nivel;
 	Tubo* tuboSeleccionado;
 	Nivel* movimientos;
+	Movimiento* iniCoordenas;
 	String pantalla;
 	int mov;
 	bool nivelCompleto;
 	bool enRepeticion;
-	bool hayCambios;
+	bool pintarImagenNivelCompleto;
+	int auxX;
+	int auxY;
 
 	//se deberia crear una lista de niveles, este es temporal
 
@@ -26,10 +33,10 @@ private:
 public:
 
 	Partida();
-	void cargarPartida(RenderWindow *& window);
+	void pintarPartidaGeneral(RenderWindow *& window);
 	bool esClickEnTubo(int xm, int ym, RenderWindow*& window);
 	void seleccionarBolaTope(Tubo*& tubo);
-	void realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window);
+	bool realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window);
 	void dibujarPartida(RenderWindow*& ventana);
 	void analizarClicks(int x, int y, RenderWindow*& window);
 	void esClickEnRetroceder(int x, int y, RenderWindow*& window);
@@ -43,9 +50,11 @@ public:
 	void guardarPartida();
 	void nivelGanado(RenderWindow*& window);
 	void clickSiguienteNivel(int x, int y);
-	void dibujarMenu();
+	void cargarPartida(RenderWindow *&window);
 	void reproducirMovimientos(RenderWindow*& window);
-	bool HayCambios();
+	void guardarCoordenadasMovimiento(int x, int y);
+
+	void pintarNivelGanado(RenderWindow *&);
 	
 
 };

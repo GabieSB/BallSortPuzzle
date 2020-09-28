@@ -34,6 +34,7 @@ void Menu::iniciar(int posx, int posy, RenderWindow* v) {
 void Menu::cargar(int posx, int posy, RenderWindow*& window) {
 	if (posx > 180 && posx < 430 && posy > 200 && posy < 240) {
 		cout << "Entro";
+		Global::getInstance().setPantalla(3);
 		window->clear(Color::White);
 	}
 }
