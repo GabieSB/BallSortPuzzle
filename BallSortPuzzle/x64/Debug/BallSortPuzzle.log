@@ -1,4 +1,18 @@
-﻿  Partida.cpp
-E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,78): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,48): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  BallSortPuzzle.vcxproj -> E:\Acceso rapido\Documentos\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
+﻿  Nivel.cpp
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(234,34): warning C4305: 'argument': truncation from 'int' to 'sf::Uint8'
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(234,23): warning C4309: 'argument': truncation of constant value
+  Partida.cpp
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Partida.cpp(23,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Partida.cpp(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Tubo.cpp
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(63,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(63,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(106,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(107,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(107,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(180,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Tubo.cpp(192,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(242): warning C4715: 'Nivel::getColor': not all control paths return a value
+C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\BallSortPuzzle\Nivel.cpp(279): warning C4715: 'Nivel::nivelGanado': not all control paths return a value
+  BallSortPuzzle.vcxproj -> C:\Users\serra\Downloads\BallSortPuzzle (2)\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe
