@@ -9,7 +9,7 @@ using namespace std;
 using namespace sf;
 class Menu {
 private:
-	Boton* titulo, *jugar, * cargarp, * acerca_de, * salirp;
+	Boton* menu;
 	Partida* partida;
 public:
 	Menu(Partida* p);

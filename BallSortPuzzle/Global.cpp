@@ -38,19 +38,19 @@ void Global::setNivel(int n) {
 	this->nivel = n;
 }
 int Global::getX() {
-	if (nivel == 1) return 185;
-	else if (nivel == 2) return 185;
-	else if (nivel == 3) return 185;
-	else if (nivel == 4) return 150;
-	else return 185;
+	if (nivel == 1) return 0;
+	else if (nivel == 2) return 0;
+	else if (nivel == 3) return 0;
+	else if (nivel == 4) return 0;
+	else return 0;
 }
 
 int Global::getY() {
-	if (nivel == 1) return 165;
-	else if (nivel == 2) return 85;
-	else if (nivel == 3) return 85;
-	else if (nivel == 4) return 85;
-	else return 85;
+	if (nivel == 1) return 0;
+	else if (nivel == 2) return 0;
+	else if (nivel == 3) return 0;
+	else if (nivel == 4) return 0;
+	else return 0;
 }
 
 RenderWindow* Global::getWindow() {

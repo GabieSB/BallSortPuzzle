@@ -21,7 +21,6 @@ private:
 public:
 	Juego(int ancho, int alto);
 	void gameLoop();
-	void image();
 	void analizarEventos(Event event);
 };
 

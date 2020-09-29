@@ -23,6 +23,7 @@ private:
 	bool nivelCompleto;
 	bool enRepeticion;
 	bool pintarImagenNivelCompleto;
+	bool enJuego;
 	int auxX;
 	int auxY;
 

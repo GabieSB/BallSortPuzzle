@@ -1,4 +1,4 @@
 ﻿  Partida.cpp
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(22,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(23,78): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\serra\Documents\GitHub\BallSortPuzzle\BallSortPuzzle\Partida.cpp(23,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   BallSortPuzzle.vcxproj -> C:\Users\serra\Documents\GitHub\BallSortPuzzle\x64\Debug\BallSortPuzzle.exe

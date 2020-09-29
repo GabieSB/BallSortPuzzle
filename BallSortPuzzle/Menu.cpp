@@ -4,16 +4,8 @@ Menu::Menu(Partida* p) {
 }
 void Menu::botones(RenderWindow* v) {
 	//int posx, int posy, String nombre, 
-	titulo = new Boton(70,20,"5");
-	jugar = new Boton(180, 120, "1");
-	cargarp = new Boton(180, 200, "2");
-	acerca_de = new Boton(180, 280, "3");
-	salirp = new Boton(180, 360, "4");
-	v->draw(*titulo->getImagen());
-	v->draw(*jugar->getImagen());
-	v->draw(*cargarp->getImagen());
-	v->draw(*acerca_de->getImagen());
-	v->draw(*salirp->getImagen());
+	menu = new Boton(0,0);
+	v->draw(*menu->getImagen());
 }
 
 void Menu::analizarClicks(int posx, int posy, RenderWindow*& window) {
@@ -25,15 +17,14 @@ void Menu::analizarClicks(int posx, int posy, RenderWindow*& window) {
 }
 
 void Menu::iniciar(int posx, int posy, RenderWindow* v) {
-	if (posx > 180 && posx < 430 && posy > 120 && posy < 175) {
+	if (posx > 175 && posx < 430 && posy > 209 && posy < 267) {
 		Global::getInstance().setPantalla(2);
 	}
 }
 
 
 void Menu::cargar(int posx, int posy, RenderWindow*& window) {
-	if (posx > 180 && posx < 430 && posy > 200 && posy < 240) {
-		cout << "Entro";
+	if (posx > 175 && posx < 430 && posy > 295 && posy < 350) {
 		Global::getInstance().setPantalla(3);
 		window->clear(Color::White);
 	}
@@ -41,14 +32,13 @@ void Menu::cargar(int posx, int posy, RenderWindow*& window) {
 
 
 void Menu::acercade(int posx, int posy, RenderWindow*& window) {
-	if (posx > 180 && posx < 430 && posy > 280 && posy < 335) {
-		cout << "Entro";
+	if (posx > 175 && posx < 430 && posy > 380 && posy < 435) {
 		window->clear(Color::White);
 	}
 }
 
 void Menu::salir(int posx, int posy, RenderWindow*& window) {
-	if (posx > 180 && posx < 430 && posy > 355 && posy < 420) {
+	if (posx > 175 && posx < 430 && posy > 468 && posy < 520) {
 		window->close();
 	}
 }
