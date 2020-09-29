@@ -117,13 +117,11 @@ void Nivel::nivel2() {
 	string tuboColores2[5] = { "amarillo", "amarillo","rojo", "azul" };
 	string tuboColores3[5] = { "rojo",  "azul" ,"amarillo", "rojo" };
 
-	generarTubo(155, 470, tuboColores1);
-	generarTubo(226, 470, tuboColores2);
-	generarTubo(298, 470, tuboColores3);
-	Tubo* tubo1 = new Tubo(370, 470);
+	generarTubo(178, 470, tuboColores1);
+	generarTubo(250, 470, tuboColores2);
+	generarTubo(322, 470, tuboColores3);
+	Tubo* tubo1 = new Tubo(213, 470);
 	agregarTubo(tubo1);
-	Tubo* tubo2 = new Tubo(442, 470);
-	agregarTubo(tubo2);
 }
 
 void Nivel::nivel3() {
@@ -133,53 +131,47 @@ void Nivel::nivel3() {
 	string tuboColores3[5] = { "rojo",  "morado" ,"azul", "morado"};
 	string tuboColores4[5] = { "rojo",  "amarillo" ,"morado", "rojo"};
 
-	generarTubo(114, 470, tuboColores1);
-	generarTubo(186, 470, tuboColores2);
-	generarTubo(257, 470, tuboColores3);
-	generarTubo(329, 470, tuboColores4);
-	Tubo* tubo1 = new Tubo(401, 470);
+	generarTubo(140, 470, tuboColores1);
+	generarTubo(213, 470, tuboColores2);
+	generarTubo(283, 470, tuboColores3);
+	generarTubo(355, 470, tuboColores4);
+	Tubo* tubo1 = new Tubo(275, 470);
 	agregarTubo(tubo1);
-	Tubo* tubo2 = new Tubo(471, 470);
-	agregarTubo(tubo2);
 }
 void Nivel::nivel4() {
 
 
-	string tuboColores1[5] = { "verde", "morado","azul", "rosado" };
+	string tuboColores1[5] = { "verde", "amarillo","azul", "rosado" };
 	string tuboColores2[5] = { "amarillo", "verde","azul", "rosado" };
-	string tuboColores3[5] = { "morado",  "verde" ,"amarillo", "verde" };
+	string tuboColores3[5] = { "rosado",  "verde" ,"amarillo", "verde" };
 	string tuboColores4[5] = { "amarillo",  "rosado" ,"azul", "azul" };
-	string tuboColores5[5] = { "morado",  "rosado" ,"morado", "amarillo" };
 
-	generarTubo(77, 470, tuboColores1);
-	generarTubo(149, 470, tuboColores2);
-	generarTubo(220, 470, tuboColores3);
-	generarTubo(292, 470, tuboColores4);
-	generarTubo(364, 470, tuboColores5);
-	Tubo* tubo1 = new Tubo(437, 470);
+	generarTubo(110, 470, tuboColores1);
+	generarTubo(180, 470, tuboColores2);
+	generarTubo(250, 470, tuboColores3);
+	generarTubo(323, 470, tuboColores4);
+	Tubo* tubo1 = new Tubo(393, 470);
 	agregarTubo(tubo1);
-	Tubo* tubo2 = new Tubo(508, 470);
+	Tubo* tubo2 = new Tubo(463, 470);
 	agregarTubo(tubo2);
 }
 void Nivel::nivel5() {
 
 
-	string tuboColores1[5] = { "rojo", "rosado","azul", "verde" };
+	string tuboColores1[5] = { "rojo", "morado","azul", "verde" };
 	string tuboColores2[5] = { "amarillo", "verde","azul", "morado" };
 	string tuboColores3[5] = { "amarillo",  "rojo" ,"amarillo", "morado" };
-	string tuboColores4[5] = { "morado",  "rosado" ,"rojo", "azul" };
+	string tuboColores4[5] = { "morado",  "amarillo" ,"rojo", "azul" };
 	string tuboColores5[5] = { "verde",  "verde" ,"rojo", "azul" };
-	string tuboColores6[5] = { "rosado",  "rosado" ,"morado", "amarillo" };
 
-	generarTubo(150, 535, tuboColores1);
-	generarTubo(222, 535, tuboColores2);
-	generarTubo(292, 535, tuboColores3);
-	generarTubo(364, 535, tuboColores4);
-	generarTubo(436, 535, tuboColores5);
-	generarTubo(222, 331, tuboColores6);
-	Tubo* tubo1 = new Tubo(294, 331);
+	generarTubo(78, 470, tuboColores1);
+	generarTubo(148, 470, tuboColores2);
+	generarTubo(218, 470, tuboColores3);
+	generarTubo(290, 470, tuboColores4);
+	generarTubo(362, 470, tuboColores5);
+	Tubo* tubo1 = new Tubo(432, 470);
 	agregarTubo(tubo1);
-	Tubo* tubo2 = new Tubo(366,331);
+	Tubo* tubo2 = new Tubo(503, 470);
 	agregarTubo(tubo2);
 }
 
@@ -190,7 +182,7 @@ void Nivel::generarTubo(int x, int y, string colores[]) {
 		sf::CircleShape* esfera = new CircleShape();
 		esfera->setRadius(10);
 		esfera->setFillColor(getColor(colores[i]));
-		
+		cout << "Color " << colores[i] << endl;
 
 		Bola* bola = new Bola(esfera);
 		bola->setColor(colores[i]);
@@ -256,9 +248,9 @@ bool Nivel::nivelGanado() {
 	Tubo* aux = iniTubos;
 	int cont = 0;
 
-	
+	cout << "nivel ganado ? " << endl;
 	while (aux != NULL) {
-		
+		cout << "aux cant act " << aux->getCantidadActual() << endl;
 		if (aux->getCantidadActual() == 4) {
 			cont++;
 		}
@@ -267,9 +259,10 @@ bool Nivel::nivelGanado() {
 		}
 		aux = aux->getSig();
 	}
-	
+	cout << "numero - 2"<<cantidadTubo-2 << endl;
 
 	if (numero == 1 && cont == 2 || numero > 1 && cont == cantidadTubo - 2) {
+		cout << "Is passed" << endl;
 		isPassed = true;
 		return true;
 	}

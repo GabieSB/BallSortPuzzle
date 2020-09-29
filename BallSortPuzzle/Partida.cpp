@@ -7,7 +7,6 @@ Partida::Partida() {
 	ventana = NULL;
 	mov = 0;
 	nivelCompleto = false;
-	enJuego = true;
 	pintarImagenNivelCompleto = false;
 	iniCoordenas = NULL;
 }
@@ -24,7 +23,7 @@ void Partida::pintarPartidaGeneral(RenderWindow *&ventana) {
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
-	
+	pintarImagenNivelCompleto = false;
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -38,15 +37,7 @@ void Partida::dibujarPartida(RenderWindow*& ventana) {
 void Partida::pintarNivelGanado(RenderWindow*& window) {
 
 	Texture* textura5 = new Texture();
-
-	string imagen5 = "Resources/completo.png";
-
-	if (nivel->getNumero() == 5) {
-		imagen5 = "Resources/juegoCompleto.png";
-	}
-	
-
-
+	string imagen5 = "Resources/nivel.png";
 
 	if (!textura5->loadFromFile(imagen5))cout << "no se carga la imagen<<";
 	Sprite* sprite5 = new Sprite(*textura5);
@@ -124,15 +115,13 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 	while (aux != NULL) {
 		x = aux->getX();
 		y = aux->getY();
-		if (xm > x  && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
+		if (xm > x && xm < x + 40 && ym < y + 40 && ym> y + 40 - (5 * 42)) {
 
 			if (tuboSeleccionado == NULL) {
-
 				aux->seleccionarTope(window);
 				this->auxX = xm;
 				this->auxY = ym;
-				if(aux->getTope()!=NULL)tuboSeleccionado = aux;
-				
+				tuboSeleccionado = aux;
 				
 			}
 			else {
@@ -155,33 +144,25 @@ bool Partida::esClickEnTubo(int xm, int ym, RenderWindow *& window) {
 }
 
 void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
-
-	if (enJuego) {
-		esClickEnTubo(xm, ym, window);
-		esClickEnRetroceder(xm, ym, window);
-		esClickEnGuardar(xm, ym, window);
-	}
-	else {
-		clickSiguienteNivel(xm, ym);
-		esClickEnReproducir(xm, ym, window);
-	}
-
-
+	esClickEnTubo(xm,ym,window);
+	esClickEnRetroceder(xm, ym, window);
 	esClickEnMenu(xm, ym, window);
-	
-	
-	
+	esClickEnGuardar(xm, ym, window);
+	esClickEnReproducir(xm, ym, window);
+	if (nivelCompleto) {
+		clickSiguienteNivel(xm, ym);
+	}
 }
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
-	if (xm > 193 && xm < 242 && ym > 27 && ym < 73) {
-		
+	if (xm > 195 && xm < 238 && ym < 29 && ym> 69) {
+		cout << "es click en retroceder" << endl;
 		if (mov > 0) {
 			nivel = NULL;
 			nivel = popMovimiento();
 			if (nivel != NULL && mov > 0) {
 				mov--;
-				
+				cout << nivel->getTubos()->getCantidadActual();
 				nivel->dibujarNivel(window);
 			}
 			else {
@@ -204,15 +185,15 @@ void Partida::esClickEnMenu(int xm, int ym, RenderWindow*& window) {
 
 void Partida::esClickEnGuardar(int xm, int ym, RenderWindow*& window) {
 	
-	if (xm > 123 && xm < 172 && ym > 28 && ym < 77) {
+	if (xm > 194 && xm < 240 && ym > 30 && ym < 70) {
 		guardarPartida();
 	}
 }
 
 void Partida::esClickEnReproducir(int xm, int ym, RenderWindow*& window) {
-	
-	if (xm > 87 && xm < 515 && ym > 444 && ym < 535) {
-		pintarImagenNivelCompleto = false;
+
+	if (xm > 129 && xm < 490 && ym > 388 && ym < 455) {
+		cout << "click en reproducirr" << endl;
 		reproducirMovimientos(window);
 		pintarImagenNivelCompleto = true;
 	}
@@ -225,7 +206,7 @@ bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 	if (aux->getTope() != NULL) {
 		CircleShape* circuloTopeRecibe = aux->getTope()->getCircle();
 		CircleShape* circuloTopeEnvia = tuboSeleccionado->getTope()->getCircle();
-		
+		cout << aux->getCantidadActual() << endl;
 		if (aux->getCantidadActual() < 4 && circuloTopeRecibe->getFillColor() == circuloTopeEnvia->getFillColor()) {
 			pushMovimiento();
 			aux->push(tuboSeleccionado->pop());
@@ -235,7 +216,6 @@ bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 			if (nivel->nivelGanado()) { 
 				pintarImagenNivelCompleto = true;
 				nivelCompleto = true;
-				enJuego = false;
 				pushMovimiento(); 
 			}
 		}
@@ -260,27 +240,27 @@ bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 }
 void Partida::clickSiguienteNivel(int xm, int ym) {
 
-	if (xm > 87 && xm < 515 && ym > 326 && ym < 416) {
-		
+	if (xm > 120 && xm < 490 && ym > 286 && ym < 355) {
+		cout << "siguiente" << endl;
 		movimientos = NULL;
 		nivel->setIsCompleto(true);
 		nivelCompleto = false;
 		enRepeticion = false;
 		pintarImagenNivelCompleto = false;
 		iniCoordenas = NULL;
-		enJuego = true;
 		nivel = new Nivel(nivel->getNumero() + 1);
 	}
 }
 void Partida::nivelGanado(RenderWindow *&window) {
-	
+	cout << "GANAAASTEEEE!" << endl;
 	reproducirMovimientos(window);
 	nivel->setIsCompleto(true);
 	
 }
 
 void Partida::reproducirMovimientos(RenderWindow *&window) {
-	
+	cout << "Sleping" << endl;
+	cout << "TOTA MOVIMIENTOS " << mov << endl;
 	
 	int cont = 0;
 	Nivel* aux = movimientos;
@@ -293,7 +273,7 @@ void Partida::reproducirMovimientos(RenderWindow *&window) {
 
 	while (aux != NULL) {
 		cont--;
-		
+		cout << "movimeinto " << cont << endl;
 		nivel = aux;
 		window->clear(Color::Color(25, 43, 26, 255));
 		pintarPartidaGeneral(window);
@@ -302,13 +282,13 @@ void Partida::reproducirMovimientos(RenderWindow *&window) {
 		aux = aux->getSig();
 
 	}
-	
+	cout << "sale del while" << endl;
 
 
 }
 
 void Partida::guardarCoordenadasMovimiento(int x, int y) {
-	
+	cout << "se guarda   " << x << "  " << y << endl;
 	
 	if (iniCoordenas == NULL) {
 		iniCoordenas = new Movimiento(x, y, NULL, NULL);
