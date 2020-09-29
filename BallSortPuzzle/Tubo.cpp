@@ -188,7 +188,7 @@ void Tubo::seleccionarTope(RenderWindow *&ventana) {
 void Tubo::deseleccionarTope(RenderWindow*& ventana) {
 	
 	if (pilaBolas != NULL ) {
-		int mov = 50 * (5 - cantidadActual);
+		int mov = 40 * (5 - cantidadActual);
 		pilaBolas->getCircle()->move(0, mov);
 		ventana->draw(*pilaBolas->getCircle());
 	}

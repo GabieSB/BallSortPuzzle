@@ -36,10 +36,14 @@ void Juego::gameLoop() {
 				evento = false;
 				ventana->display();
 			}
-			else {
+			else  if (Global::getInstance().getPantalla() == 3) {
 
 				partida->cargarPartida(this->ventana);
 				Global::getInstance().setPantalla(2);
+			}
+			else {
+
+			
 			}
 		
 		}

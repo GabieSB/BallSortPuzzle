@@ -175,7 +175,7 @@ void Partida::analizarClicks(int xm, int ym ,RenderWindow *&window) {
 
 void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 	if (xm > 193 && xm < 242 && ym > 27 && ym < 73) {
-		
+		cout << "mov " << mov << endl;
 		if (mov > 0) {
 			nivel = NULL;
 			nivel = popMovimiento();
@@ -221,7 +221,7 @@ void Partida::esClickEnReproducir(int xm, int ym, RenderWindow*& window) {
 bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 	bool seRealizo = true;;
 	Tubo* aux = tuboRecibe;
-	if (mov < 5)mov++;
+	
 	if (aux->getTope() != NULL) {
 		CircleShape* circuloTopeRecibe = aux->getTope()->getCircle();
 		CircleShape* circuloTopeEnvia = tuboSeleccionado->getTope()->getCircle();
@@ -230,7 +230,7 @@ bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 			pushMovimiento();
 			aux->push(tuboSeleccionado->pop());
 			nivel->setMovimientos();
-			mov++;
+			if (mov < 5)mov++;
 
 			if (nivel->nivelGanado()) { 
 				pintarImagenNivelCompleto = true;
@@ -247,7 +247,7 @@ bool Partida::realizarMovimiento(Tubo *&tuboRecibe, RenderWindow*& window) {
 	}
 	else {//si el tope esta vacio coloca directamente
 		pushMovimiento();
-		mov++;
+		if (mov < 5)mov++;
 		aux->push(tuboSeleccionado->pop());
 		nivel->setMovimientos();
 
