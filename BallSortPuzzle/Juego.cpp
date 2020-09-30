@@ -8,6 +8,9 @@ Juego::Juego(int ancho, int alto) {
 	this->ancho = ancho;
 	this->alto = alto;
 	ventana = new RenderWindow(VideoMode(ancho, alto), "Ball sort");
+	Image* icon = new Image();
+	icon->loadFromFile("Resources/icon.PNG");
+	ventana->setIcon(icon->getSize().x, icon->getSize().y, icon->getPixelsPtr());
 	Global::getInstance().setWindow(ventana);
 	
 	partida = new Partida();
