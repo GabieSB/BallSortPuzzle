@@ -14,7 +14,6 @@ Partida::Partida() {
 
 void Partida::pintarPartidaGeneral(RenderWindow *&ventana) {
 	//mov = 0;
-	
 	Texture* textura = new Texture();
 	String imagen = "Resources/nivel"+ to_string(Global::getInstance().getNivel()) +".PNG";
 	textura->loadFromFile(imagen);
@@ -24,7 +23,6 @@ void Partida::pintarPartidaGeneral(RenderWindow *&ventana) {
 	ventana->draw(*sprite);
 	nivel->dibujarNivel(ventana);
 	dibujarPartida(ventana);
-	
 }
 
 void Partida::dibujarPartida(RenderWindow*& ventana) {
@@ -198,6 +196,15 @@ void Partida::esClickEnRetroceder(int xm, int ym, RenderWindow*& window) {
 void Partida::esClickEnMenu(int xm, int ym, RenderWindow*& window) {
 	//Pantalla
 	if (xm > 40 && xm < 87 && ym > 32 && ym< 66) {
+		movimientos = NULL;
+		mov = 0;
+		nivel->setIsCompleto(true);
+		nivelCompleto = false;
+		enRepeticion = false;
+		pintarImagenNivelCompleto = false;
+		iniCoordenas = NULL;
+		enJuego = true;
+		nivel = new Nivel(1);
 		Global::getInstance().setPantalla(1);
 	}
 }
@@ -263,6 +270,7 @@ void Partida::clickSiguienteNivel(int xm, int ym) {
 	if (xm > 87 && xm < 515 && ym > 326 && ym < 416) {
 		
 		movimientos = NULL;
+		mov = 0;
 		nivel->setIsCompleto(true);
 		nivelCompleto = false;
 		enRepeticion = false;

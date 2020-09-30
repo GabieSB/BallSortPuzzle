@@ -33,7 +33,7 @@ void Menu::cargar(int posx, int posy, RenderWindow*& window) {
 
 void Menu::acercade(int posx, int posy, RenderWindow*& window) {
 	if (posx > 175 && posx < 430 && posy > 380 && posy < 435) {
-
+		Global::getInstance().setPantalla(4);
 	}
 }
 

@@ -41,9 +41,16 @@ void Juego::gameLoop() {
 				partida->cargarPartida(this->ventana);
 				Global::getInstance().setPantalla(2);
 			}
-			else {
-
-			
+			else if(Global::getInstance().getPantalla() == 4){
+				ventana->clear(Color::Color(25, 43, 26, 255));
+				Texture* textura = new Texture();
+				String imagen = "Resources/acerca.PNG";
+				textura->loadFromFile(imagen);
+				Sprite* sprite = new Sprite(*textura);
+				sprite->setTexture(*textura);
+				sprite->setPosition(Global::getInstance().getX(), Global::getInstance().getY());
+				ventana->draw(*sprite);
+				ventana->display();
 			}
 		
 		}
